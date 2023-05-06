@@ -8,7 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/nur";
-    newmpkg.url = "github:jbuchermn/newm";
+    # newmpkg.url = "github:jbuchermn/newm";
+    newmpkg.url = "sourcehut:~atha/newm-atha#newm-atha";
     newmpkg.inputs.nixpkgs.follows = "nixpkgs";
     pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";

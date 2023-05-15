@@ -65,7 +65,7 @@ in
     graphviz
     jq
 
-    nyxt
+    #nyxt
 
     libreoffice-fresh
     hunspellDicts.de_DE

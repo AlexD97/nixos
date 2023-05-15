@@ -9,7 +9,7 @@
     };
     nur.url = "github:nix-community/nur";
     # newmpkg.url = "github:jbuchermn/newm";
-    newmpkg.url = "sourcehut:~atha/newm-atha#newm-atha";
+    newmpkg.url = "sourcehut:~atha/newm-atha";
     newmpkg.inputs.nixpkgs.follows = "nixpkgs";
     pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +33,7 @@
         overlays = [
           nur.overlay
           (self: super: {
-            newm = newmpkg.packages.x86_64-linux.newm;
+            newm = newmpkg.packages.x86_64-linux.newm-atha;
             pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
           })
           (import self.inputs.emacs-overlay)

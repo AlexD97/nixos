@@ -117,6 +117,7 @@ in
     lhs2tex
 
     pandoc
+    pdftk
 
     sioyek
     evince

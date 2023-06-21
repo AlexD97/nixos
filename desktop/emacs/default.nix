@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtk;
+    package = pkgs.emacs-pgtk;
     extraPackages = epkgs : [
       epkgs.vterm
       epkgs.async

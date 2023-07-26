@@ -146,11 +146,12 @@
 \\usepackage{amssymb}
 \\usepackage{unicode-math}
 
-\\setmathfont{Asana-Math.otf}
-\\setmathrm{Alegreya}
-\\setmathfont[range=it]{Alegreya-Italic}
-\\setmathfont[range=bfit]{Alegreya-BoldItalic}
-\\setmathfont[range={}]{Asana-Math.otf}
+\\setmathfont{STIX Two Math}
+\\setmathfont[range=up/{latin,Latin,greek,Greek,num}]{Alegreya-Regular}
+\\setmathfont[range=it/{latin,Latin,greek,Greek}]{Alegreya-Italic}
+\\setmathfont[range=bfup/{latin,Latin,greek,Greek,num}]{Alegreya-Bold}
+\\setmathfont[range=bfit/{latin,Latin,greek,Greek}]{Alegreya-BoldItalic}
+\\setmathfont[range={}]{STIX Two Math}
 \\setmonofont[Scale=0.9]{Iosevka Nerd Font}"
                  ("\\section{%s}" . "\\section*{%s}")
                  ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -183,11 +184,12 @@
 \\usepackage{amssymb}
 \\usepackage{unicode-math}
 
-\\setmathfont{Asana-Math.otf}
-\\setmathrm{Alegreya}
-\\setmathfont[range=it]{Alegreya-Italic}
-\\setmathfont[range=bfit]{Alegreya-BoldItalic}
-\\setmathfont[range={}]{Asana-Math.otf}
+\\setmathfont{STIX Two Math}
+\\setmathfont[range=up/{latin,Latin,greek,Greek,num}]{Alegreya-Regular}
+\\setmathfont[range=it/{latin,Latin,greek,Greek}]{Alegreya-Italic}
+\\setmathfont[range=bfup/{latin,Latin,greek,Greek,num}]{Alegreya-Bold}
+\\setmathfont[range=bfit/{latin,Latin,greek,Greek}]{Alegreya-BoldItalic}
+\\setmathfont[range={}]{STIX Two Math}
 \\setmonofont[Scale=0.9]{Iosevka Nerd Font}"
 		 ("\\chapter{%s}". "\\chapter*{%s}")
                  ("\\section{%s}" . "\\section*{%s}")
@@ -546,6 +548,9 @@
 ;; Line cursor and no blink
 (set-default 'cursor-type  '(bar . 1))
 ;;(blink-cursor-mode 0)
+
+;; Scrolling
+(pixel-scroll-precision-mode 1)
 
 ;; Line spacing, can be 0 for code and 1 or 2 for text
 ;;(setq-default line-spacing 0)

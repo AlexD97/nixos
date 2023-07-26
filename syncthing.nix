@@ -37,33 +37,35 @@ in
 {
   services.syncthing = {
     enable = true;
-    devices = allDevices;
     dataDir = "/home/alexander";
     user = "alexander";
 
-    folders =
-      let
-        staggered = {
-          type = "staggered";
-          params = {
-            cleanInterval = "3600";
-            maxAge = "2592000";
+    settings = {
+      devices = allDevices;
+      folders =
+        let
+          staggered = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "2592000";
+            };
+          };
+        in
+          {
+          Notizen = {
+            path = "~/Dokumente/Notizen";
+            versioning = staggered;
+            devices = devicesNamesExceptPixel;
+            id = "bvl4i-olzll";
+          };
+          Geistliches = {
+            path = "~/Dokumente/Geistliches";
+            versioning = staggered;
+            devices = devicesNamesExceptPixel;
+            id = "64kub-awlpo";
           };
         };
-      in
-        {
-        Notizen = {
-          path = "~/Dokumente/Notizen";
-          versioning = staggered;
-          devices = devicesNamesExceptPixel;
-          id = "bvl4i-olzll";
-        };
-        Geistliches = {
-          path = "~/Dokumente/Geistliches";
-          versioning = staggered;
-          devices = devicesNamesExceptPixel;
-          id = "64kub-awlpo";
-        };
       };
-  };
+    };
 }

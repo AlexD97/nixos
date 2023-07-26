@@ -112,6 +112,8 @@ in
     gyre-fonts
     libertinus
     xits-math
+    vistafonts
+    stix-two
 
     texlive.combined.scheme-full
     lhs2tex

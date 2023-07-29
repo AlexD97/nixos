@@ -265,7 +265,7 @@
 		       (rx ".stversions"))
 	   (setq-local org-roam-capture-templates
 		       '(("d" "default" plain "%?" #'org-roam-capture--get-point "%?" :target
-			  (file+head "pages/${slug}.org" "#+title: ${title}")
+			  (file+head "pages/${slug}.org" "#+title: ${title}\n")
 			  :unnarrowed t)))))))
 (setq org-preview-latex-default-process 'dvisvgm)
 
@@ -403,6 +403,9 @@
 
   ;; Corfu: completion with TAB
   (setq tab-always-indent 'complete)
+
+  ;; Dired: Async Shell Command no new buffer
+  (add-to-list 'display-buffer-alist '("*Async Shell Command*" display-buffer-no-window (nil)))
   )
 
 ;; Optionally use the `orderless' completion style.

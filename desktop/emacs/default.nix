@@ -8,6 +8,8 @@
       epkgs.vterm-toggle
 
       epkgs.auctex
+
+      epkgs.typst-mode
       
       epkgs.undo-tree
       epkgs.olivetti

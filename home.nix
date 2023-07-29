@@ -45,7 +45,13 @@ in
     ./custom/fsautocomplete.nix
   ];
 
-  home.sessionVariables = { QT_QPA_PLATFORM="wayland-egl"; };
+  home.sessionVariables = {
+    QT_QPA_PLATFORM="wayland-egl";
+  };
+
+  systemd.user.sessionVariables = {
+    TYPST_FONT_PATHS = "${config.home.path}/share/fonts";
+  };
 
   fonts.fontconfig.enable = true;
 
@@ -92,6 +98,8 @@ in
     idris2
     haskell-language-server
     cabal-install
+    cargo
+    rustc
 
     zsh
     fzf
@@ -114,12 +122,18 @@ in
     xits-math
     vistafonts
     stix-two
+    dejavu_fonts
+    vollkorn
 
     texlive.combined.scheme-full
     lhs2tex
 
     pandoc
     pdftk
+
+    typst
+    typst-lsp
+    typst-fmt
 
     sioyek
     evince
@@ -138,6 +152,9 @@ in
       bbenoist.nix
       ms-python.python
       pkgs.vscode-extensions.github.copilot
+      nvarner.typst-lsp
+      mgt19937.typst-preview
+      rust-lang.rust-analyzer
 
       akamud.vscode-theme-onelight
     ];

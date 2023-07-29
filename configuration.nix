@@ -139,6 +139,7 @@ in
     NIXOS_OZONE_WL = "1";
     EDITOR = "emacsclient -nw -c -F '((font . \"Iosevka-12\"))' -a 'emacs -nw'";
     QT_QPA_PLATFORMTHEME = "kde";
+    #TYPST_FONT_PATHS = "${config.home.profileDirectory}/share/fonts";
     #GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"; # for gtk / udiskie (pixbuf)
   };
 
@@ -191,6 +192,10 @@ in
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
+  # fonts.packages = with pkgs; [
+  #   vollkorn
+  # ];
+  
   # kdeconnect
   # programs.kdeconnect.enable = true;
 

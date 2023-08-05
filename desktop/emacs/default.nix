@@ -33,6 +33,7 @@
       epkgs.all-the-icons
       epkgs.all-the-icons-dired
       epkgs.dired-hide-dotfiles
+      epkgs.dired-open
       epkgs.svg-tag-mode
       epkgs.rainbow-delimiters
       epkgs.org-bullets

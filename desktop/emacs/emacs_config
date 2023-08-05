@@ -670,6 +670,10 @@
   :bind (:map dired-mode-map
 	      ("H" . dired-hide-dotfiles-mode)))
 
+(use-package dired-open
+  :config
+  (setq dired-open-extensions '(("pdf" . "evince"))))
+
 ;; Vterm
 (use-package vterm
   :commands vterm

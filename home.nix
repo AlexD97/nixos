@@ -137,6 +137,7 @@ in
 
     sioyek
     evince
+    pympress
 
     borgbackup
     vorta

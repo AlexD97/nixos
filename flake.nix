@@ -43,6 +43,14 @@
             iosevka-fixed-slab = super.iosevka.override { set = "fixed-slab"; };
           })
 
+          (self: super: {ripgrep-all = super.ripgrep-all.overrideAttrs (old: {
+            doInstallCheck = false; });}
+          )
+
+          (self: super: {pympress = super.pympress.overridePythonAttrs (old: {
+            version = "1.8.3"; });}
+          )
+          
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

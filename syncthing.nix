@@ -15,7 +15,8 @@ let
     };
     nas = {
       name = "nas";
-      id = "ZOBQMXM-ACM5UZJ-5MZPATJ-2SLBGSI-RCE5N5G-ZU5TFMT-JJWHRXM-SDFOFQ3";
+      # id = "ZOBQMXM-ACM5UZJ-5MZPATJ-2SLBGSI-RCE5N5G-ZU5TFMT-JJWHRXM-SDFOFQ3";
+      id = "DHVK56T-UYDGRYR-T24BQJ4-U2GM6MY-PSXDCXA-LTMKIKZ-W2CSRR2-ZSHETQS";
     };
   };
   allDevices = allDevicesExceptPixel // {

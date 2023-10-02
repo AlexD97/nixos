@@ -48,7 +48,7 @@ in
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "de_DE.utf8";
+  i18n.defaultLocale = "de_DE.UTF-8";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -81,7 +81,7 @@ in
   ];
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "neo";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -210,6 +210,8 @@ in
      enable = true;
   #   enableSSHSupport = true;
    };
+
+   programs.ssh.startAgent = true;
 
    programs.evolution = {
     enable = true;

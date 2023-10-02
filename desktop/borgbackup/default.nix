@@ -10,6 +10,7 @@
           ".gradle"
           ".cmake"
           ".crashlytics"
+          ".mozilla"
           ".java"
           ".julia"
           ".jupyter"
@@ -35,9 +36,9 @@
     homeBackup = rec {
       paths = "${homePath}";
       encryption.mode = "none";
-      environment.BORG_RSH = "ssh -o 'StrictHostKeyChecking=no' -i ${homePath}/.ssh/id_rsa";
+      environment.BORG_RSH = "ssh -o 'StrictHostKeyChecking=no' -i ${homePath}/.ssh/id_nixos_server";
       environment.BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK = "yes";
-      repo = "ssh://alexander@omvNAS/sharedfolders/Backups/NixosLaptopBackup";
+      repo = "ssh://alexander@nixosserver/sharedfolders/Backups/NixosLaptopBackup";
       exclude = map (x: paths + "/" + x) common-excludes;
       startAt = "*-*-01/2 00:00:00";
       extraCreateArgs = "--verbose --stats";

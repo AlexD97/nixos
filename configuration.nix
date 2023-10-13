@@ -164,8 +164,11 @@ in
     shell = pkgs.zsh;
   };
 
+  # programs.firefox.languagePacks = [ "de" "en-US" ];
+
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # Option already set in flake.nix
+  # nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

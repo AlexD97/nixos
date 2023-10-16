@@ -11,20 +11,18 @@
     # newmpkg.url = "github:jbuchermn/newm";
     newmpkg.url = "sourcehut:~atha/newm-atha";
     newmpkg.inputs.nixpkgs.follows = "nixpkgs";
-    pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
-    pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
+    #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
+    #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Version from 2022-11-14 does not work with org-roam
-    #emacs-overlay.url = "github:nix-community/emacs-overlay/ab39e4112f2f97fa5e13865fa6792e00e6344558";
+    #emacs-overlay.url = "github:nix-community/emacs-overlay/bd5c5e9a9b460a275df97c7226f573cd88cb27ef";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    #emacs-overlay.url = "github:nix-community/emacs-overlay/5403096194fd02e1a5424a365d057d934c705639";
 
     #vscode-marketplace.url = "github:ameertaweel/nix-vscode-marketplace";
     vscode-marketplace.url = "github:nix-community/nix-vscode-extensions";
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, newmpkg, pywm-fullscreenpkg, vscode-marketplace, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, newmpkg, vscode-marketplace, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -34,7 +32,7 @@
           nur.overlay
           (self: super: {
             newm = newmpkg.packages.x86_64-linux.newm-atha;
-            pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
+            #pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
           })
           (import self.inputs.emacs-overlay)
 
@@ -50,7 +48,11 @@
           (self: super: {pympress = super.pympress.overridePythonAttrs (old: {
             version = "1.8.3"; });}
           )
-          
+
+          (final: prev: {vaapiIntel = prev.vaapiIntel.overrideAttrs (old: {
+            enableHybridCodec = true; });}
+          )
+            
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

@@ -59,7 +59,7 @@ in
     dunst
     libnotify
 
-    pywm-fullscreen
+    #pywm-fullscreen
 
     grim
     slurp

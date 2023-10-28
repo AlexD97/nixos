@@ -72,7 +72,8 @@
       "interval": 10,
       "format": "  {:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}",
-      "on-click": "emacsclient -c -F '((font . \"Iosevka-12:spacing=90\"))' -e '(calendar)'"
+//      "on-click": "emacsclient -c -F '((font . \"Iosevka-12:spacing=90\"))' -e '(calendar)'"
+      "on-click": "emacsclient -c -e '(calendar)'"
     },
 
     "cpu": {

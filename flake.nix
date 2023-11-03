@@ -45,14 +45,19 @@
             doInstallCheck = false; });}
           )
 
-          (self: super: {pympress = super.pympress.overridePythonAttrs (old: {
-            version = "1.8.3"; });}
-          )
-
           (final: prev: {vaapiIntel = prev.vaapiIntel.overrideAttrs (old: {
             enableHybridCodec = true; });}
           )
-            
+
+          (final: prev: {typst = prev.typst.overrideAttrs (old: {
+            src = prev.fetchFromGitHub {
+              owner = "typst";
+              repo = "typst";
+              rev = "master";
+              hash = "sha256-q2b/PoNwpzarJbIPzokYgZRD2/Oe/XB40C4VXdwL/NA=";
+            };
+            version = "master"; });}
+          )
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

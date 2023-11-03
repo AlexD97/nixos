@@ -8,6 +8,8 @@ let
     pillow
     matplotlib
     scipy
+    requests
+    beautifulsoup4
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 
@@ -51,6 +53,16 @@ in
 
   systemd.user.sessionVariables = {
     TYPST_FONT_PATHS = "${config.home.path}/share/fonts";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "application/pdf" = [ "org.gnome.Evince.desktop" "sioyek.desktop" ];
+    };
+    defaultApplications = {
+      "application/pdf" = [ "org.gnome.Evince.desktop" "sioyek.desktop" ];
+    };
   };
 
   fonts.fontconfig.enable = true;
@@ -100,6 +112,9 @@ in
     cabal-install
     cargo
     rustc
+
+    tree-sitter
+    tree-sitter-grammars.tree-sitter-typst
 
     zsh
     fzf

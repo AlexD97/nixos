@@ -9,7 +9,9 @@
 
       epkgs.auctex
 
-      epkgs.typst-mode
+      epkgs.treesit-grammars.with-all-grammars
+
+      #epkgs.typst-mode
       
       epkgs.undo-tree
       epkgs.olivetti

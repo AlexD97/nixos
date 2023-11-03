@@ -480,8 +480,9 @@
   (defun affe-orderless-regexp-compiler (input _type _ignorecase)
    (setq compiled_input (orderless-pattern-compiler input))
    (cons compiled_input (lambda (str) (orderless--highlight compiled_input str))))
- (setq affe-regexp-compiler #'affe-orderless-regexp-compiler))
-
+  (setq affe-regexp-compiler #'affe-orderless-regexp-compiler)
+  )
+  
 
 ;; ;; Ivy,Counsel, & Swiper
 ;; ;; Enable Ivy mode in general
@@ -783,6 +784,15 @@
 	 ("C-<tab>" . 'copilot-accept-completion-by-word)
 	 :map copilot-completion-map
 	 ("C-<iso-lefttab>" . 'copilot-accept-completion)))
+
+;; Typst
+(use-package typst-ts-mode
+  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
+  :custom
+  (typst-ts-mode-watch-options "--open"))
+
+;; browse-url
+(setq browse-url-handlers '(("." . browse-url-xdg-open)))
 
 
 (custom-set-faces

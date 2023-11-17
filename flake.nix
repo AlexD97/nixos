@@ -9,7 +9,8 @@
     };
     nur.url = "github:nix-community/nur";
     # newmpkg.url = "github:jbuchermn/newm";
-    newmpkg.url = "sourcehut:~atha/newm-atha";
+    # newmpkg.url = "sourcehut:~atha/newm-atha";
+    newmpkg.url = "github:EpsilonKu/newm-atha";
     newmpkg.inputs.nixpkgs.follows = "nixpkgs";
     #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
@@ -41,23 +42,23 @@
             iosevka-fixed-slab = super.iosevka.override { set = "fixed-slab"; };
           })
 
-          (self: super: {ripgrep-all = super.ripgrep-all.overrideAttrs (old: {
-            doInstallCheck = false; });}
-          )
+          # (self: super: {ripgrep-all = super.ripgrep-all.overrideAttrs (old: {
+          #   doInstallCheck = false; });}
+          # )
 
           (final: prev: {vaapiIntel = prev.vaapiIntel.overrideAttrs (old: {
             enableHybridCodec = true; });}
           )
 
-          (final: prev: {typst = prev.typst.overrideAttrs (old: {
-            src = prev.fetchFromGitHub {
-              owner = "typst";
-              repo = "typst";
-              rev = "master";
-              hash = "sha256-q2b/PoNwpzarJbIPzokYgZRD2/Oe/XB40C4VXdwL/NA=";
-            };
-            version = "master"; });}
-          )
+          # (final: prev: {typst = prev.typst.overrideAttrs (old: {
+          #   src = prev.fetchFromGitHub {
+          #     owner = "typst";
+          #     repo = "typst";
+          #     rev = "master";
+          #     hash = "sha256-q2b/PoNwpzarJbIPzokYgZRD2/Oe/XB40C4VXdwL/NA=";
+          #   };
+          #   version = "master"; });}
+          # )
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

@@ -58,6 +58,8 @@
       epkgs.lsp-haskell
       epkgs.lsp-mode
 
+      epkgs.magit
+
       #epkgs.auctex-latexmk
 
       epkgs.org-roam

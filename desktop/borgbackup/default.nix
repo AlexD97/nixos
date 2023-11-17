@@ -70,7 +70,7 @@
       unitConfig.OnSuccess = "notify-borgbackup-success.service";
       preStart = lib.mkBefore ''
         # waiting for internet after resume-from-suspend
-        until /run/wrappers/bin/ping google.com -c1 -q >/dev/null; do :; done
+        until /run/current-system/sw/bin/ping google.com -c1 -q >/dev/null; do :; done
       '';
       #timerConfig.Persistent = true;
     };

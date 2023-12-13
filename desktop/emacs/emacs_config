@@ -478,10 +478,9 @@
   ;; (consult-customize affe-grep :preview-key (kbd "M-."))
   (setq affe-count 200)
   (defun affe-orderless-regexp-compiler (input _type _ignorecase)
-   (setq compiled_input (orderless-pattern-compiler input))
-   (cons compiled_input (lambda (str) (orderless--highlight compiled_input str))))
-  (setq affe-regexp-compiler #'affe-orderless-regexp-compiler)
-  )
+    (setq input (orderless-pattern-compiler input))
+    (cons input (apply-partially #'orderless--highlight input t)))
+  (setq affe-regexp-compiler #'affe-orderless-regexp-compiler))
   
 
 ;; ;; Ivy,Counsel, & Swiper

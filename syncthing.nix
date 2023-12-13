@@ -3,7 +3,7 @@ let
   allDevicesExceptPixel = {
     desktop = {
       name = "desktop";
-      id = " S6NVNGZ-6S56NOX-RM3YCQP-PAKJN3J-BJHQ3VE-FRAA6BC-XPYBXUM-T5WEBAO";
+      id = "S6NVNGZ-6S56NOX-RM3YCQP-PAKJN3J-BJHQ3VE-FRAA6BC-XPYBXUM-T5WEBAO";
     };
     phone = {
       name = "phone";

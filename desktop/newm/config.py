@@ -38,8 +38,8 @@ outputs = [
     { 'name': 'DP-6', 'pos_x': -3000, 'pos_y': -1920, 'transform': PYWM_TRANSFORM_90 },
     { 'name': 'DP-7', 'pos_x': -1920, 'pos_y': -1200 },
     # Büro
-    { 'name': 'DP-2', 'pos_x': 0, 'pos_y': -1920, 'transform': PYWM_TRANSFORM_90 },
-    { 'name': 'DP-1', 'pos_x': 1128, 'pos_y': -1440 }
+    # { 'name': 'DP-2', 'pos_x': 0, 'pos_y': -1920, 'transform': PYWM_TRANSFORM_90 },
+    # { 'name': 'DP-1', 'pos_x': 1128, 'pos_y': -1440 }
 ]
 
 pywm = {

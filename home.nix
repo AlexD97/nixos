@@ -10,6 +10,7 @@ let
     scipy
     requests
     beautifulsoup4
+    pypdf2
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 

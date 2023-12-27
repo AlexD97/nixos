@@ -142,6 +142,7 @@ in
     vollkorn
 
     texlive.combined.scheme-full
+    ghostscript
     lhs2tex
 
     pandoc

@@ -89,7 +89,7 @@ in
   services.avahi.enable = true;
   # Important to resolve .local domains of printers, otherwise you get an error
   # like  "Impossible to connect to XXX.local: Name or service not known"
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -112,6 +112,7 @@ in
   xdg = {
     portal = {
       enable = true;
+      #config.common.default = "*";
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
       ];
@@ -158,6 +159,7 @@ in
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      brave
       kate
     #  thunderbird
     ];

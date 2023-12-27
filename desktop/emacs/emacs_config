@@ -747,6 +747,8 @@
 
 
 ;; Agda
+(defun agda2-string-quote (s) (format "%S" s)) ; workaround for bug in agda2-mode, see https://agda.zulipchat.com/#narrow/stream/259644-newcomers/topic/Difficulty.20getting.20Emacs.20to.20find.20Agda/near/400594390
+
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 

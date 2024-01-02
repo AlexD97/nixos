@@ -14,7 +14,7 @@ let
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 
-  agda-with-my-packages = pkgs.agda.withPackages (p: [ p.standard-library ]);
+  agda-with-my-packages = pkgs.agda.withPackages (p: [ p.standard-library p.cubical ]);
 in
 
 {

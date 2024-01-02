@@ -1,53 +1,34 @@
 { pkgs, ... }:
-# pkgs.stdenv.mkDerivation rec {
-#   pname = "snip";
-#   version = "0.1.0";
+let snip = 
+  pkgs.stdenv.mkDerivation rec {
+    name = "Snip";
 
-#   src = pkgs.fetchgit {
-#     #url = "https://pl-git.informatik.uni-kl.de/hinze/snip.git";
-#     url = "git@pl-git.informatik.uni-kl.de:hinze/snip.git";
-#     rev = "8e03331007a57fd9a621e3daf91610fae597416d";
-#     sha256 = "sha256-MlqJOoMSRuYeG+jl8DFgcNnpEyeRgDCK2JlN9pOqBWA=";
-#   };
+    src = ./Snip.lhs;
 
-#   buildInputs = [
-#     pkgs.ghc
-#   ];
+    buildInputs = [ pkgs.ghc ];
 
-#   buildPhase = ''
-#     ghc --make -O2 Snip.lhs
-#   '';
+    unpackPhase = ''
+      cp $src Snip.lhs
+    '';
 
-#   installPhase = ''
-#     mkdir -p $out/bin
-#     mv Snip $out/bin/snip
-#     mv Snap $out/bin/snap
-#   '';
-# }
+    buildPhase = ''
+      ghc --make -O2 Snip.lhs
+    '';
 
-let
-  haskellEnv = pkgs.haskellPackages.ghcWithPackages (ps: with ps; []);
-in
-pkgs.stdenv.mkDerivation {
-  name = "Snip";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp Snip $out/bin/
+      ln -s $out/bin/Snip $out/bin/snip
+      ln -s $out/bin/Snip $out/bin/snap
+    '';
 
-  src = ./.;
-
-  buildInputs = [ pkgs.ghc ];
-
-  buildPhase = ''
-    ghc --make -O2 Snip.lhs
-  '';
-
-  installPhase = ''
-    mkdir -p $out/bin
-    cp Snip $out/bin/
-    ln -s $out/bin/Snip $out/bin/snip
-    ln -s $out/bin/Snip $out/bin/snap
-  '';
-
-  meta = with pkgs.stdenv.lib; {
-    description = "Snip";
+    meta = with pkgs.stdenv.lib; {
+      description = "Snip";
+    };
   };
+in
+{
+  home.packages = [
+    snip
+  ];
 }
-

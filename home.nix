@@ -46,6 +46,7 @@ in
     # ./zsh.nix
 
     ./custom/fsautocomplete.nix
+    ./custom/snip.nix
   ];
 
   home.sessionVariables = {

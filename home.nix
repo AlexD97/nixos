@@ -72,6 +72,7 @@ in
     alacritty
     #emacs
     vlc
+    mpv
     anki
     syncthingtray
     warpd

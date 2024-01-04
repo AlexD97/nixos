@@ -1,5 +1,6 @@
 import os
 import logging
+import socket
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +31,8 @@ def on_reconfigure():
 corner_radius = 0.0
 #corner_radius = 20.5
 
+# Get output names from /sys/class/drm/
+
 outputs = [
     { 'name': 'eDP-1', 'width': 2256, 'height': 1504, 'pos_x': 0, 'pos_y': 0, 'scale': 1. }, # },
     { 'name': 'virt-1', 'pos_x': 1280, 'pos_y': 0, 'width': 1280, 'height': 720, 'scale': 1., 
@@ -41,6 +44,22 @@ outputs = [
     # { 'name': 'DP-2', 'pos_x': 0, 'pos_y': -1920, 'transform': PYWM_TRANSFORM_90 },
     # { 'name': 'DP-1', 'pos_x': 1128, 'pos_y': -1440 }
 ]
+
+# Determine ip address
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+
+    if ip.startswith("131.246.92"): # office
+        outputs = [
+            { 'name': 'eDP-1', 'width': 2256, 'height': 1504, 'pos_x': 0, 'pos_y': 0, 'scale': 1. },
+            { 'name': 'DP-5', 'pos_x': 1128, 'pos_y': -1440 },
+            { 'name': 'DP-7', 'pos_x': 48, 'pos_y': -1920, 'transform': PYWM_TRANSFORM_90 }
+        ]
+except:
+    pass
 
 pywm = {
     # 'xkb_model': "macintosh",

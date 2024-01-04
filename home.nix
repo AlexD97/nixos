@@ -11,6 +11,7 @@ let
     requests
     beautifulsoup4
     pypdf2
+    openai
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 
@@ -61,9 +62,29 @@ in
     enable = true;
     associations.added = {
       "application/pdf" = [ "org.gnome.Evince.desktop" "sioyek.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+      "application/x-extension-htm" = [ "firefox.desktop" ];
+      "application/x-extension-html" = [ "firefox.desktop" ];
+      "application/x-extension-shtml" = [ "firefox.desktop" ];
+      "application/xhtml+xml" = [ "firefox.desktop" ];
+      "application/x-extension-xhtml" = [ "firefox.desktop" ];
+      "application/x-extension-xht" = [ "firefox.desktop" ];
     };
     defaultApplications = {
       "application/pdf" = [ "org.gnome.Evince.desktop" "sioyek.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+      "application/x-extension-htm" = [ "firefox.desktop" ];
+      "application/x-extension-html" = [ "firefox.desktop" ];
+      "application/x-extension-shtml" = [ "firefox.desktop" ];
+      "application/xhtml+xml" = [ "firefox.desktop" ];
+      "application/x-extension-xhtml" = [ "firefox.desktop" ];
+      "application/x-extension-xht" = [ "firefox.desktop" ];
     };
   };
 
@@ -74,6 +95,7 @@ in
     #emacs
     vlc
     mpv
+    ffmpeg
     anki
     syncthingtray
     warpd

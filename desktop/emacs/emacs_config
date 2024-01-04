@@ -702,6 +702,13 @@
                  (reusable-frames . visible)
                  (window-height . 0.3))))
 
+;; pdf-tools
+(use-package pdf-tools
+  :commands (pdf-loader-install)
+  :mode "\\.pdf\\'"
+  :init (pdf-loader-install)
+  :config (add-to-list 'revert-without-query ".pdf"))
+(add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 ;; Notmuch email
 (use-package notmuch

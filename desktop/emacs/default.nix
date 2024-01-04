@@ -9,6 +9,8 @@
 
       epkgs.auctex
 
+      epkgs.pdf-tools
+
       epkgs.treesit-grammars.with-all-grammars
 
       #epkgs.typst-mode

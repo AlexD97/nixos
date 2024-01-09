@@ -95,6 +95,7 @@ in
     #emacs
     vlc
     mpv
+    yt-dlp
     ffmpeg
     anki
     syncthingtray

@@ -15,6 +15,9 @@
     #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
 
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.niri-src.url = "github:YaLTeR/niri";
+
     #emacs-overlay.url = "github:nix-community/emacs-overlay/bd5c5e9a9b460a275df97c7226f573cd88cb27ef";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
@@ -23,7 +26,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, newmpkg, vscode-marketplace, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, newmpkg, niri, vscode-marketplace, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -81,6 +84,10 @@
              home-manager.extraSpecialArgs = {
                inherit pkgs vscode-marketplace system;
              };
+           }
+           niri.nixosModules.default
+           {
+             programs.niri.enable = true;
            }
           ];
         };

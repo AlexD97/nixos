@@ -91,6 +91,9 @@ in
   # like  "Impossible to connect to XXX.local: Name or service not known"
   services.avahi.nssmdns4 = true;
 
+  # Swaylock
+  security.pam.services.swaylock = {};
+  
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -112,9 +115,19 @@ in
   xdg = {
     portal = {
       enable = true;
-      #config.common.default = "*";
+      # config.common.default = "*";
+      # config = {
+      #   niri = {
+      #     default = [ "gnome" "gtk" ];
+      #     "org.freedesktop.impl.portal.Secret" = [
+      #       "gnome-keyring"
+      #     ];
+      #   };
+      # };
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
+        # xdg-desktop-portal-gtk
+        # xdg-desktop-portal-gnome
       ];
     };
   };
@@ -137,7 +150,7 @@ in
 
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
-    NIXOS_OZONE_WL = "1";
+    #NIXOS_OZONE_WL = "1";
     EDITOR = "emacsclient -nw -c -F '((font . \"Iosevka-12\"))' -a 'emacs -nw'";
     QT_QPA_PLATFORMTHEME = "kde";
     #TYPST_FONT_PATHS = "${config.home.profileDirectory}/share/fonts";

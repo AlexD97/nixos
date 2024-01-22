@@ -58,7 +58,7 @@ input {
 // You can configure outputs by their name, which you can find with wayland-info(1).
 // The built-in laptop monitor is usually called "eDP-1".
 // Remember to uncommend the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -83,6 +83,24 @@ input {
     // It the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=0 y=0
+}
+
+output "DP-5" {
+    scale 1.0
+    mode "1680x1050"
+    position x=0 y=-1050
+}
+
+output "DP-6" {
+    scale 1.0
+    mode "1080x1920"
+    position x=-3000 y=-1920
+}
+
+output "DP-7" {
+    scale 1.0
+    mode "1920x1200"
+    position x=-1920 y=-1200
 }
 
 layout {
@@ -158,23 +176,37 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
+// "hash" "dbus-update-activation-environment" "2>/dev/null" "&&" 
+// // spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "QT_QPA_PLATFORM=wayland-egl"
+// spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "QT_QPA_PLATFORM=wayland-egl"
+// spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" "QT_QPA_PLATFORM=wayland-egl"
+// // spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-wlr.service"
+// // // spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-gtk.service"
+// // spawn-at-startup "systemctl" "--user" "mask" "xdg-desktop-portal-wlr.service"
+// spawn-at-startup "systemctl" "--user" "restart" "syncthingtray.service"
+// spawn-at-startup "systemctl" "--user" "--wait" "restart" "waybar.service"
+// spawn-at-startup "waybar"
+// spawn-at-startup "sleep" "5"
+// spawn-at-startup "systemctl" "--user" "restart" "syncthingtray.service"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+// // spawn-at-startup "waybar"
 
 cursor {
     // Change the theme and size of the cursor as well as set the
     // `XCURSOR_THEME` and `XCURSOR_SIZE` env variables.
-    // xcursor-theme "Adwaita"
-    // xcursor-size 24
+    xcursor-theme "Adwaita"
+    xcursor-size 24
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some rounded corners.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Bilder/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -188,13 +220,18 @@ binds {
     // when running as a winit window.
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "alacritty"; }
-    Mod+D { spawn "fuzzel"; }
+    Mod+Return { spawn "alacritty"; }
+    Mod+A { spawn "rofi" "-show" "run"; }
+    Mod+E { spawn "emacsclient" "-c" "-a" "'emacs'"; }
+    Mod+B { spawn "firefox"; }
     Mod+Alt+L { spawn "swaylock"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
-    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
+
+    XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
 
     Mod+Q { close-window; }
 
@@ -281,6 +318,8 @@ binds {
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
+    Mod+M      { consume-window-into-column; }
+    Mod+N      { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
     Mod+F { maximize-column; }

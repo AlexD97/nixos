@@ -15,7 +15,8 @@
     #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
 
-    niri.url = "github:sodiboo/niri-flake";
+    #niri.url = "github:sodiboo/niri-flake";
+    niri.url = github:AlexD97/niri-flake;
     niri.inputs.niri-src.url = "github:YaLTeR/niri";
 
     #emacs-overlay.url = "github:nix-community/emacs-overlay/bd5c5e9a9b460a275df97c7226f573cd88cb27ef";

@@ -91,6 +91,8 @@ in
     breeze-icons
     
     sway
+    swaybg
+    swaylock
   ];
 
   home.file."wallpaper.jpg".source = ./wallpaper.jpg;

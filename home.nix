@@ -40,6 +40,7 @@ in
   imports = [
     ./desktop/newm
     ./desktop/sway
+    ./desktop/niri
     ./desktop/emacs
     #./desktop/email
     ./desktop/eww
@@ -109,6 +110,8 @@ in
     graphviz
     jq
 
+    #obs-studio
+    
     #nyxt
 
     libreoffice-fresh
@@ -138,6 +141,7 @@ in
     cabal-install
     cargo
     rustc
+    drm_info
 
     tree-sitter
     tree-sitter-grammars.tree-sitter-typst
@@ -195,6 +199,7 @@ in
       bbenoist.nix
       ms-python.python
       pkgs.vscode-extensions.github.copilot
+      pkgs.vscode-extensions.github.copilot-chat
       nvarner.typst-lsp
       mgt19937.typst-preview
       rust-lang.rust-analyzer
@@ -229,7 +234,8 @@ in
 
   systemd.user.services.syncthingtray.Service = {
     Restart = "on-failure";
-    RestartSec = "3";
+    RestartSec = "10";
+    ExecStart = lib.mkForce "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray}/bin/syncthingtray --wait'";
   };
 
   systemd.user.targets.tray = {

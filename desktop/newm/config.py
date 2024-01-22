@@ -22,6 +22,7 @@ def on_startup():
     os.system("hash dbus-update-activation-environment 2>/dev/null && \
         dbus-update-activation-environment --systemd DISPLAY \
         WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots QT_QPA_PLATFORM=wayland-egl")
+    os.system("systemctl --user stop waybar.service")
     os.system("systemctl --user restart xdg-desktop-portal-wlr.service")
     os.system("wl-paste --watch cliphist store &")
 

@@ -231,10 +231,10 @@ in
 
    programs.ssh.startAgent = true;
 
-   programs.evolution = {
-    enable = true;
-    #plugins = [ pkgs.evolution-ews ];
-  };
+  #  programs.evolution = {
+  #   enable = true;
+  #   #plugins = [ pkgs.evolution-ews ];
+  # };
 
   # Battery life / tlp
   services.tlp = {

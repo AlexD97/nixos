@@ -12,6 +12,7 @@ let
     beautifulsoup4
     pypdf2
     openai
+    pygame
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 

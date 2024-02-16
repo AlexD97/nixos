@@ -212,6 +212,107 @@ screenshot-path "~/Bilder/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
+// Settings for the "Important Hotkeys" overlay.
+hotkey-overlay {
+    // Uncomment this line if you don't want to see the hotkey help at niri startup.
+    // skip-at-startup
+}
+
+// Animation settings.
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+
+    // You can configure all individual animations.
+    // Available settings are the same for all of them:
+    // - off disables the animation.
+    // - duration-ms sets the duration of the animation in milliseconds.
+    // - curve sets the easing curve. Currently, available curves
+    //   are "ease-out-cubic" and "ease-out-expo".
+
+    // Animation when switching workspaces up and down,
+    // including after the touchpad gesture.
+    workspace-switch {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
+
+    // All horizontal camera view movement:
+    // - When a window off-screen is focused and the camera scrolls to it.
+    // - When a new window appears off-screen and the camera scrolls to it.
+    // - When a window resizes bigger and the camera scrolls to show it in full.
+    // - And so on.
+    horizontal-view-movement {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
+
+    // Window opening animation. Note that this one has different defaults.
+    window-open {
+        // off
+        // duration-ms 150
+        // curve "ease-out-expo"
+    }
+
+    // Config parse error and new default config creation notification
+    // open/close animation.
+    config-notification-open-close {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
+}
+
+// Window rules let you adjust behavior for individual windows.
+// They are processed in order of appearance in this file.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    // Match directives control which windows this rule will apply to.
+    // You can match by app-id and by title.
+    // The window must match all properties of the match directive.
+    //match app-id="org.myapp.MyApp" title="My Cool App"
+    //match app-id="org.gnome.Evince"
+    match app-id="evince"
+
+    // There can be multiple match directives. A window must match any one
+    // of the rule's match directives.
+    //
+    // If there are no match directives, any window will match the rule.
+    // match title="Second App"
+
+    // You can also add exclude directives which have the same properties.
+    // If a window matches any exclude directive, it won't match this rule.
+    //
+    // Both app-id and title are regular expressions.
+    // Raw KDL strings are helpful here.
+    //exclude app-id=r#"\.unwanted\."#
+
+    // Here are the properties that you can set on a window rule.
+    // You can override the default column width.
+    default-column-width { proportion 1.0; }
+
+    // You can set the output that this window will initially open on.
+    // If such an output does not exist, it will open on the currently
+    // focused output as usual.
+    open-on-output "DP-6"
+}
+
+// Here's a useful example. Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+/-window-rule {
+    // This regular expression is intentially made as specific as possile,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    // The regular expression can match anywhere in the string.
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -222,8 +323,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "alacritty"; }
-    Mod+A { spawn "rofi" "-show" "run"; }
-    Mod+E { spawn "emacsclient" "-c" "-a" "'emacs'"; }
+    Mod+R { spawn "rofi" "-show" "run"; }
+    Mod+T { spawn "emacsclient" "-c" "-a" "'emacs'"; }
     Mod+B { spawn "firefox"; }
     Mod+Alt+L { spawn "swaylock"; }
 
@@ -236,19 +337,19 @@ binds {
 
     Mod+Q { close-window; }
 
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+I     { focus-column-left; }
+    Mod+A     { focus-window-down; }
+    Mod+L     { focus-window-up; }
+    Mod+E     { focus-column-right; }
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
 
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
+    Mod+Ctrl+I     { move-column-left; }
+    Mod+Ctrl+A     { move-window-down; }
+    Mod+Ctrl+L     { move-window-up; }
+    Mod+Ctrl+E     { move-column-right; }
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
@@ -266,35 +367,35 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Shift+I     { focus-monitor-left; }
+    Mod+Shift+A     { focus-monitor-down; }
+    Mod+Shift+L     { focus-monitor-up; }
+    Mod+Shift+E     { focus-monitor-right; }
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
     Mod+Shift+Right { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+H     { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-window-to-monitor-right; }
+    Mod+Shift+Ctrl+I     { move-window-to-monitor-left; }
+    Mod+Shift+Ctrl+A     { move-window-to-monitor-down; }
+    Mod+Shift+Ctrl+L     { move-window-to-monitor-up; }
+    Mod+Shift+Ctrl+E     { move-window-to-monitor-right; }
     Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-window-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
 
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    Mod+W              { focus-workspace-down; }
+    Mod+X              { focus-workspace-up; }
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+Ctrl+U         { move-window-to-workspace-down; }
-    Mod+Ctrl+I         { move-window-to-workspace-up; }
+    Mod+Ctrl+W         { move-window-to-workspace-down; }
+    Mod+Ctrl+X         { move-window-to-workspace-up; }
     Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-window-to-workspace-up; }
 
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+    Mod+Shift+W         { move-workspace-down; }
+    Mod+Shift+X         { move-workspace-up; }
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
 
@@ -319,10 +420,8 @@ binds {
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
-    Mod+M      { consume-window-into-column; }
-    Mod+N      { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+H { switch-preset-column-width; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
@@ -335,12 +434,12 @@ binds {
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Y { set-column-width "-10%"; }
+    Mod+J { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Y { set-window-height "-10%"; }
+    Mod+Shift+J { set-window-height "+10%"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have

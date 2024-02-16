@@ -74,6 +74,7 @@
   };
 
   services.emacs.enable = true;
+  services.emacs.startWithUserSession = "graphical"; # otherwise emacs doesn't start other programs in niri (has probably to do with wayland-display env var)
 
   home.file.".emacs".source = ./emacs_config;
   #home.file.".emacs".source = config.lib.file.mkOutOfStoreSymlink ./emacs_config;

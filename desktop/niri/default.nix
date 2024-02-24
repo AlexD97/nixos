@@ -4,7 +4,9 @@ let
 
 in
 { 
-  xdg.configFile."niri/config.kdl".text = confFile;
+  # xdg.configFile."niri/config.kdl".text = confFile;
+  programs.niri.config = confFile;
+  #programs.niri.package = pkgs.niri-unstable;
 
   imports = [
   ];

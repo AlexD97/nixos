@@ -50,6 +50,7 @@ in
 
     ./custom/fsautocomplete.nix
     ./custom/snip.nix
+    ./custom/audio_changer.nix
   ];
 
   home.sessionVariables = {
@@ -257,7 +258,7 @@ in
     };
   };
 
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
     Unit = {
       #Description = "polkit-gnome-authentication-agent-1";
       Description = "polkit-kde-agent";

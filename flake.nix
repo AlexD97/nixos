@@ -17,7 +17,7 @@
 
     niri.url = "github:sodiboo/niri-flake";
     #niri.url = github:AlexD97/niri-flake;
-    niri.inputs.niri-src.url = "github:YaLTeR/niri";
+    #niri.inputs.niri-src.url = "github:YaLTeR/niri";
 
     #emacs-overlay.url = "github:nix-community/emacs-overlay/bd5c5e9a9b460a275df97c7226f573cd88cb27ef";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -66,6 +66,9 @@
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/
+
+          niri.overlays.niri
+          #niri.overlays.niri
         ];
       };
       lib = nixpkgs.lib;
@@ -89,6 +92,8 @@
            niri.nixosModules.default
            {
              programs.niri.enable = true;
+             nixpkgs.overlays = [ niri.overlays.niri ];
+             programs.niri.package = pkgs.niri-unstable;
            }
           ];
         };

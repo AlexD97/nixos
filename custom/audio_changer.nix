@@ -8,3 +8,7 @@ let audio-changer = pkgs.stdenv.mkDerivation {
   dontUnpack = true;
   installPhase = "install -Dm755 ${./audio_changer.py} $out/bin/audio-changer";
 };
+in
+{
+  home.packages = [ audio-changer ];
+}

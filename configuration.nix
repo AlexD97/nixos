@@ -95,6 +95,9 @@ in
 
   # Swaylock
   security.pam.services.swaylock = {};
+
+  # Polkit
+  security.polkit.enable = true;
   
   # Enable sound with pipewire.
   sound.enable = true;

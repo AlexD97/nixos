@@ -116,6 +116,8 @@ layout {
         // Color of the ring on the active monitor: red, green, blue, alpha.
         active-color 127 200 255 255
 
+        active-gradient from="#f98b06" to="#0674f9" angle=45
+
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color 80 80 80 255
     }
@@ -191,6 +193,15 @@ layout {
 // spawn-at-startup "systemctl" "--user" "restart" "syncthingtray.service"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 // // spawn-at-startup "waybar"
+
+// You can override environment variables for processes spawned by niri.
+environment {
+    // Set a variable like this:
+    // QT_QPA_PLATFORM "wayland"
+
+    // Remove a variable by using null as the value:
+    // DISPLAY null
+}
 
 cursor {
     // Change the theme and size of the cursor as well as set the
@@ -294,7 +305,9 @@ window-rule {
 
     // Here are the properties that you can set on a window rule.
     // You can override the default column width.
-    default-column-width { proportion 1.0; }
+    // default-column-width { proportion 1.0; }
+
+    open-maximized true;
 
     // You can set the output that this window will initially open on.
     // If such an output does not exist, it will open on the currently
@@ -331,9 +344,12 @@ binds {
     // Example volume keys mappings for PipeWire & WirePlumber.
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 
     XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
     XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+    Mod+Alt+C { spawn "bash" "-c" "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }
 
     Mod+Q { close-window; }
 
@@ -420,11 +436,13 @@ binds {
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
+    Mod+Shift+Comma { consume-or-expel-window-left; }
+    Mod+Shift+Period { consume-or-expel-window-right; }
 
     Mod+H { switch-preset-column-width; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+C { center-column; }
+    Mod+J { center-column; }
 
     // Finer width adjustments.
     // This command can also:
@@ -434,12 +452,12 @@ binds {
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
-    Mod+Y { set-column-width "-10%"; }
-    Mod+J { set-column-width "+10%"; }
+    Mod+V { set-column-width "-10%"; }
+    Mod+C { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
-    Mod+Shift+Y { set-window-height "-10%"; }
-    Mod+Shift+J { set-window-height "+10%"; }
+    Mod+Shift+V { set-window-height "-10%"; }
+    Mod+Shift+C { set-window-height "+10%"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have

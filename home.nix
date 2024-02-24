@@ -11,7 +11,7 @@ let
     requests
     beautifulsoup4
     pypdf2
-    openai
+#    openai
     pygame
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
@@ -114,6 +114,8 @@ in
     ripgrep
     ripgrep-all
     pinentry-gnome
+    #polkit_gnome
+    libsForQt5.polkit-kde-agent
     imagemagick
     poppler_utils
     graphviz
@@ -135,6 +137,7 @@ in
 
     udiskie
     jmtpfs
+    gparted
 
     #python3
     python-with-my-packages
@@ -252,6 +255,24 @@ in
       Description = "Home Manager System Tray";
       Requires = [ "graphical-session-pre.target" ];
     };
+  };
+
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    Unit = {
+      #Description = "polkit-gnome-authentication-agent-1";
+      Description = "polkit-kde-agent";
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      #ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/bin/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
 }

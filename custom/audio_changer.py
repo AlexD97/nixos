@@ -73,25 +73,29 @@ def main():
     arg_parser.add_argument("-s", "--select", action="store_true", help="Select the default sink.")
     arg_parser.add_argument("-m", "--mute", action="store_true", help="Toggle mute the current running sinks.")
     arg_parser.add_argument("-l", "--lower", action="store_true", help="Lower the volume of the current running sinks.")
-    arg_parser.add_argument("-r", "--raise", action="store_true", help="Raise the volume of the current running sinks.")
+    arg_parser.add_argument("-r", "--raise", dest="raise_", action="store_true", help="Raise the volume of the current running sinks.")
     args = arg_parser.parse_args()
 
     if args.select:
         select_default_sink()
     else:
         running_sinks = parse_pactl_status()
-        running_sinks = [str(int(sink)-1) for sink in running_sinks]
+        #running_sinks = [str(int(sink)-1) for sink in running_sinks]
         if len(running_sinks) == 0:
-            running_sinks = ["@DEFAULT_AUDIO_SINK@"]
+            #running_sinks = ["@DEFAULT_AUDIO_SINK@"]
+            running_sinks = ["@DEFAULT_SINK@"]
         for sink in running_sinks:
             if args.volume:
                 change_volume(sink, args.volume)
             elif args.mute:
-                subprocess.run(f"wpctl set-mute {sink} toggle", shell=True)
+                #subprocess.run(f"wpctl set-mute {sink} toggle", shell=True)
+                subprocess.run(f"pactl set-sink-mute {sink} toggle", shell=True)
             elif args.lower:
-                subprocess.run(f"wpctl set-volume {sink} 5%-", shell=True)
-            elif args.upper:
-                subprocess.run(f"wpctl set-volume {sink} 5%+", shell=True)
+                #subprocess.run(f"wpctl set-volume {sink} 5%-", shell=True)
+                subprocess.run(f"pactl set-sink-volume {sink} -5%", shell=True)
+            elif args.raise_:
+                #subprocess.run(f"wpctl set-volume {sink} 5%+", shell=True)
+                subprocess.run(f"pactl set-sink-volume {sink} +5%", shell=True)
                 
 
 if __name__ == "__main__":

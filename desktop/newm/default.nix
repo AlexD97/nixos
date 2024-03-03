@@ -84,7 +84,7 @@ in
     krusader
 
     pavucontrol
-    eww-wayland
+    eww
 
     gwenview
 

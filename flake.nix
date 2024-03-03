@@ -89,7 +89,7 @@
                inherit pkgs vscode-marketplace system;
              };
            }
-           niri.nixosModules.default
+           niri.nixosModules.niri
            {
              programs.niri.enable = true;
              nixpkgs.overlays = [ niri.overlays.niri ];

@@ -70,6 +70,7 @@
       epkgs.sqlite3
       epkgs.org-journal
       epkgs.one-themes
+      epkgs.org-ql
     ];
   };
 

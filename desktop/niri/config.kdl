@@ -53,6 +53,17 @@ input {
     // Uncomment this if you would like to configure the power button elsewhere
     // (i.e. logind.conf).
     // disable-power-key-handling
+
+    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    // warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    focus-follows-mouse
+
+    // Uncomment this to enable workspace auto-back-and-forth.
+    // If enabled, switching to the same workspace by index twice will switch back to the
+    // previous workspace.
+    // workspace-auto-back-and-forth
 }
 
 // You can configure outputs by their name, which you can find with wayland-info(1).

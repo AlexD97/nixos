@@ -725,13 +725,18 @@
 
 (use-package eglot-jl)
 
+(use-package lsp-nix
+  :ensure lsp-mode
+  :after (lsp-mode)
+  :demand t
+  :custom
+  (lsp-nix-nil-formatter ["nixpkgs-fmt"]))
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 
 (use-package python-mode
   :mode "\\.py\\'")
-
-(add-to-list 'eglot-server-programs '(nix-mode . ("rnix-lsp")))
 
 ;; Ligatures
 (use-package ligature

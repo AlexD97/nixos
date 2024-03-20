@@ -114,7 +114,7 @@ in
     sqlite
     ripgrep
     ripgrep-all
-    pinentry-gnome
+    pinentry-gnome3
     #polkit_gnome
     libsForQt5.polkit-kde-agent
     imagemagick
@@ -147,7 +147,8 @@ in
     agda-with-my-packages
     dotnet-sdk
     gnumake
-    rnix-lsp
+    #rnix-lsp
+    nil
     nodejs
     idris2
     haskell-language-server
@@ -171,8 +172,8 @@ in
     (nerdfonts.override { fonts = ["FiraCode" "DroidSansMono" "Iosevka" "SourceCodePro" "JetBrainsMono" ]; })
     #iosevka-fixed
     #iosevka-fixed-slab
-    (iosevka-bin.override { variant = "sgr-iosevka-fixed"; } )
-    (iosevka-bin.override { variant = "sgr-iosevka-fixed-curly-slab"; } )
+    (iosevka-bin.override { variant = "SGr-IosevkaFixed"; } )
+    (iosevka-bin.override { variant = "SGr-IosevkaFixedCurlySlab"; } )
     alegreya
     alegreya-sans
     gyre-fonts

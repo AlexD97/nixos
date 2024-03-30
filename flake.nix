@@ -19,7 +19,7 @@
     #niri.url = github:AlexD97/niri-flake;
     #niri.inputs.niri-src.url = "github:YaLTeR/niri";
 
-    #emacs-overlay.url = "github:nix-community/emacs-overlay/bd5c5e9a9b460a275df97c7226f573cd88cb27ef";
+    #emacs-overlay.url = "github:nix-community/emacs-overlay/8c56baa0e5ba4bbf9947605a31672e2f4735b1a9";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     #vscode-marketplace.url = "github:ameertaweel/nix-vscode-marketplace";

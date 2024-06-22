@@ -138,7 +138,7 @@ in
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;

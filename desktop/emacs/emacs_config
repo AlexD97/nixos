@@ -198,6 +198,46 @@
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (add-to-list 'org-latex-classes
+	       '("scrbook" "\\documentclass{scrbook}
+\\usepackage{fontspec}
+\\setmainfont[
+  SmallCapsFont={Alegreya SC},
+  UprightFeatures={SmallCapsFont=AlegreyaSC-Regular},
+  ItalicFeatures={SmallCapsFont=AlegreyaSC-Italic},
+  BoldFeatures={SmallCapsFont=AlegreyaSC-Bold},
+  BoldItalicFeatures={SmallCapsFont=AlegreyaSC-BoldItalic},
+  Ligatures=TeX,
+]{Alegreya}
+\\setsansfont[
+  Extension=.otf,
+  UprightFont=*-Regular,
+  ItalicFont=*-Italic,
+  BoldFont=*-Bold,
+  UprightFeatures={SmallCapsFont=*SC-Regular},
+  ItalicFeatures={SmallCapsFont=*SC-Italic},
+  BoldFeatures={SmallCapsFont=*SC-Bold},
+  BoldItalicFeatures={SmallCapsFont=*SC-BoldItalic},
+]{AlegreyaSans}
+
+\\usepackage{amsmath}
+\\usepackage{amssymb}
+\\usepackage{unicode-math}
+
+\\setmathfont{STIX Two Math}
+\\setmathfont[range=up/{latin,Latin,greek,Greek,num}]{Alegreya-Regular}
+\\setmathfont[range=it/{latin,Latin,greek,Greek}]{Alegreya-Italic}
+\\setmathfont[range=bfup/{latin,Latin,greek,Greek,num}]{Alegreya-Bold}
+\\setmathfont[range=bfit/{latin,Latin,greek,Greek}]{Alegreya-BoldItalic}
+\\setmathfont[range={}]{STIX Two Math}
+\\setmonofont[Scale=0.9]{Iosevka Nerd Font}"
+		 ("\\part{%s}". "\\part*{%s}")
+		 ("\\chapter{%s}". "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (add-to-list 'org-latex-classes
                '("beamer" "\\documentclass{beamer}
 \\usepackage{fontspec}
 \\usepackage{amsmath}

@@ -48,7 +48,7 @@ in
     ./desktop/applications
     # ./zsh.nix
 
-    ./custom/fsautocomplete.nix
+    #./custom/fsautocomplete.nix
     ./custom/snip.nix
     ./custom/audio_changer.nix
   ];
@@ -145,7 +145,8 @@ in
     julia-bin
     ghc
     agda-with-my-packages
-    dotnet-sdk
+    dotnet-sdk_8
+    fsautocomplete
     gnumake
     #rnix-lsp
     nil

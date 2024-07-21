@@ -70,11 +70,11 @@ in
     wdisplays
     wlr-randr
 
-    gnome.nautilus
+    nautilus
     dconf
     #evolution
     #evolution-ews
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     xfce.thunar
     xfce.tumbler
     thunderbird

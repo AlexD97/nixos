@@ -828,7 +828,7 @@
 
 ;; Copilot
 (use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
   :ensure
   t
   :hook
@@ -836,7 +836,12 @@
   :bind (("C-TAB" . 'copilot-accept-completion-by-word)
 	 ("C-<tab>" . 'copilot-accept-completion-by-word)
 	 :map copilot-completion-map
-	 ("C-<iso-lefttab>" . 'copilot-accept-completion)))
+	 ("C-<iso-lefttab>" . 'copilot-accept-completion))
+  :config
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(agda2-moda 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+  (add-to-list 'copilot-indentation-alist '(fsharp-mode 2)))
 
 ;; Typst
 (use-package typst-ts-mode

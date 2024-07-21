@@ -20,7 +20,7 @@
   services.fprintd.enable = true;
 
   environment.variables = {
-    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+    VDPAU_DRIVER = lib.mkIf config.hardware.graphics.enable (lib.mkDefault "va_gl");
   };
 
 #  nixpkgs.config.packageOverrides = pkgs: {

@@ -140,6 +140,9 @@ in
     jmtpfs
     gparted
 
+    jetbrains.rider
+    zed
+
     #python3
     python-with-my-packages
     julia-bin
@@ -202,6 +205,8 @@ in
 
     borgbackup
     vorta
+
+    signal-desktop
   ];
 
   programs.vscode = {

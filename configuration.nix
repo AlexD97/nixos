@@ -68,19 +68,19 @@ in
     };
   };
 
-  services.xserver.desktopManager.session = [
-    { #manage = "desktop";
-      name = "newm";
-      #start = ''
-      #  systemctl --user import-environment PATH
-      #  dbus-update-activation-environment --systemd PATH
-      #  systemctl --user start newm.service
-      #'';
-      start = ''
-        ${pkgs.stdenv.shell} ${pkgs.newm}/bin/start-newm & waitPID=$!
-      '';
-    }
-  ];
+  # services.xserver.desktopManager.session = [
+  #   { #manage = "desktop";
+  #     name = "newm";
+  #     #start = ''
+  #     #  systemctl --user import-environment PATH
+  #     #  dbus-update-activation-environment --systemd PATH
+  #     #  systemctl --user start newm.service
+  #     #'';
+  #     start = ''
+  #       ${pkgs.stdenv.shell} ${pkgs.newm}/bin/start-newm & waitPID=$!
+  #     '';
+  #   }
+  # ];
 
   # Configure console keymap
   console.keyMap = "neo";

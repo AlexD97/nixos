@@ -48,7 +48,7 @@ in
   ];
 
   home.packages = with pkgs; [
-    newm
+    #newm
     systemd-newm
     debug-newm
     waybar
@@ -110,8 +110,10 @@ in
     Service = {
       Type = "simple";
       ExecStart = ''
-        ${pkgs.newm}/bin/start-newm
       '';
+      # ExecStart = ''
+      #   ${pkgs.newm}/bin/start-newm
+      # '';
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
@@ -131,8 +133,10 @@ in
     Service = {
       Type = "simple";
       ExecStart = ''
-        ${pkgs.newm}/bin/start-newm -d
       '';
+      # ExecStart = ''
+      #   ${pkgs.newm}/bin/start-newm -d
+      # '';
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;

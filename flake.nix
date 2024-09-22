@@ -10,8 +10,8 @@
     nur.url = "github:nix-community/nur";
     # newmpkg.url = "github:jbuchermn/newm";
     # newmpkg.url = "sourcehut:~atha/newm-atha";
-    newmpkg.url = "github:EpsilonKu/newm-atha";
-    newmpkg.inputs.nixpkgs.follows = "nixpkgs";
+    #ewmpkg.url = "github:EpsilonKu/newm-atha";
+    #ewmpkg.inputs.nixpkgs.follows = "nixpkgs";
     #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,7 +27,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, newmpkg, niri, vscode-marketplace, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, niri, vscode-marketplace, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,10 +35,10 @@
         config.allowUnfree = true;
         overlays = [
           nur.overlay
-          (self: super: {
-            newm = newmpkg.packages.x86_64-linux.newm-atha;
-            #pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
-          })
+          # (self: super: {
+          #   newm = newmpkg.packages.x86_64-linux.newm-atha;
+          #   #pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
+          # })
           (import self.inputs.emacs-overlay)
 
           (self: super: {

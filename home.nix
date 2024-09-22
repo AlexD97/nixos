@@ -134,6 +134,8 @@ in
     isync
     notmuch
 
+    iperf
+
     libappindicator
 
     udiskie

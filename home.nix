@@ -122,6 +122,11 @@ in
     graphviz
     jq
 
+    gnome-boxes
+    quickemu
+    #quickgui
+    spice-gtk
+
     #obs-studio
     
     #nyxt
@@ -189,6 +194,7 @@ in
     stix-two
     dejavu_fonts
     vollkorn
+    cm_unicode
 
     texlive.combined.scheme-full
     ghostscript
@@ -204,6 +210,8 @@ in
     sioyek
     evince
     pympress
+
+    #xournalpp
 
     borgbackup
     vorta

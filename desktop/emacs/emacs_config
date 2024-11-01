@@ -839,13 +839,14 @@
 	 ("C-<iso-lefttab>" . 'copilot-accept-completion))
   :config
   (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(typst-ts-mode 4))
   (add-to-list 'copilot-indentation-alist '(agda2-moda 2))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
   (add-to-list 'copilot-indentation-alist '(fsharp-mode 2)))
 
 ;; Typst
 (use-package typst-ts-mode
-  :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
+  :straight (:type git :host codeberg :repo "meow_king/typst-ts-mode")
   :custom
   (typst-ts-mode-watch-options "--open"))
 

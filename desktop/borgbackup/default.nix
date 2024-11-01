@@ -30,6 +30,8 @@
           "*/.tox"
           "*/venv"
           "*/.venv"
+          # VM
+          "Programme/quickemu"
         ];
         homePath = "/home/alexander";
   in {

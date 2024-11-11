@@ -58,7 +58,7 @@ input {
     // warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
 
     // Uncomment this to enable workspace auto-back-and-forth.
     // If enabled, switching to the same workspace by index twice will switch back to the
@@ -128,6 +128,7 @@ layout {
         active-color 127 200 255 255
 
         active-gradient from="#f98b06" to="#0674f9" angle=45
+	// active-gradient from="#f98b06" to="#0674f9" angle=45 in="oklch longer hue"
 
         // Color of the ring on inactive monitors: red, green, blue, alpha.
         inactive-color 80 80 80 255

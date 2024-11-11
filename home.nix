@@ -141,6 +141,8 @@ in
 
     iperf
 
+    ddcutil
+
     libappindicator
 
     udiskie

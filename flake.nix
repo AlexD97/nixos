@@ -63,6 +63,17 @@
           #   };
           #   version = "master"; });}
           # )
+
+          (final: prev: {rofi-wayland = prev.rofi-wayland.overrideAttrs (old: {
+            src = prev.fetchFromGitHub {
+              owner = "lbonn";
+              repo = "rofi";
+              rev = "0a0cc5f";
+              fetchSubmodules = true;
+              hash = "sha256-R+6ChMPXARftFu9xOygQAsu8Nv53L33lBrUdfeuiqK0=";
+            };
+            version = "latest"; });}
+          )
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

@@ -11,7 +11,7 @@ let
     requests
     beautifulsoup4
     pypdf2
-#    openai
+    openai
     pygame
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
@@ -127,6 +127,8 @@ in
     #quickgui
     spice-gtk
 
+    cachix
+
     #obs-studio
     
     #nyxt
@@ -232,9 +234,10 @@ in
       ms-python.python
       pkgs.vscode-extensions.github.copilot
       pkgs.vscode-extensions.github.copilot-chat
-      nvarner.typst-lsp
-      mgt19937.typst-preview
+      #nvarner.typst-lsp
+      myriad-dreamin.tinymist
       rust-lang.rust-analyzer
+      itdongquoctien.html-inline-style-conversion
 
       akamud.vscode-theme-onelight
     ];

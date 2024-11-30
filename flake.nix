@@ -1,6 +1,15 @@
 {
   description = "A very basic flake";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -64,15 +73,17 @@
           #   version = "master"; });}
           # )
 
-          (final: prev: {rofi-wayland = prev.rofi-wayland.overrideAttrs (old: {
+          (final: prev: {rofi-wayland-unwrapped = prev.rofi-wayland-unwrapped.overrideAttrs (old: {
             src = prev.fetchFromGitHub {
               owner = "lbonn";
               repo = "rofi";
-              rev = "0a0cc5f";
+              #rev = "wayland";
+              rev = "93ad86d";
               fetchSubmodules = true;
-              hash = "sha256-R+6ChMPXARftFu9xOygQAsu8Nv53L33lBrUdfeuiqK0=";
+              #hash = "sha256-R+6ChMPXARftFu9xOygQAsu8Nv53L33lBrUdfeuiqK0=";
+              hash = "sha256-ipvG75snR39dziidFOb8wwgW2vL4ZIlcP1EWvYEqpP0=";
             };
-            version = "latest"; });}
+              version = "wayland"; });}
           )
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };

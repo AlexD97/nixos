@@ -58,6 +58,7 @@
       epkgs.idris-mode
       epkgs.haskell-mode
       epkgs.lsp-haskell
+      epkgs.rust-mode
       epkgs.lsp-mode
 
       epkgs.magit

@@ -171,6 +171,7 @@ in
     cabal-install
     cargo
     rustc
+    rust-analyzer
     drm_info
 
     tree-sitter
@@ -214,7 +215,8 @@ in
     pdftk
 
     typst
-    typst-lsp
+    #typst-lsp
+    tinymist
     typst-fmt
 
     sioyek

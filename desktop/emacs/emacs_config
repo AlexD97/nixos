@@ -778,6 +778,13 @@
 (use-package python-mode
   :mode "\\.py\\'")
 
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  :init
+  (setq rust-mode-treesitter-derive t)
+  :hook
+  (rust-mode . lsp))
+
 ;; Ligatures
 (use-package ligature
   :config
@@ -805,10 +812,10 @@
                 (shell-command-to-string "agda-mode locate")))
 
 ;; Quelpa
-(setq quelpa-upgrade-interval 14)
-(add-hook #'after-init-hook #'quelpa-upgrade-all-maybe)
+;; (setq quelpa-upgrade-interval 14)
+;; (add-hook #'after-init-hook #'quelpa-upgrade-all-maybe)
 ;(setq quelpa-update-melpa-p nil)
-;(setq quelpa-checkout-melpa-p nil)
+(setq quelpa-checkout-melpa-p nil)
 
 ;; Straight
 (setq package-enable-at-startup nil)
@@ -842,13 +849,20 @@
   (add-to-list 'copilot-indentation-alist '(typst-ts-mode 4))
   (add-to-list 'copilot-indentation-alist '(agda2-moda 2))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
-  (add-to-list 'copilot-indentation-alist '(fsharp-mode 2)))
+  (add-to-list 'copilot-indentation-alist '(fsharp-mode 2))
+  (add-to-list 'copilot-indentation-alist '(rust-mode 4)))
 
 ;; Typst
 (use-package typst-ts-mode
   :straight (:type git :host codeberg :repo "meow_king/typst-ts-mode")
   :custom
   (typst-ts-mode-watch-options "--open"))
+
+(with-eval-after-load 'lsp-mode
+  (lsp-register-client (make-lsp-client
+                       :new-connection (lsp-stdio-connection "tinymist")
+          	       :major-modes '(typst-ts-mode)
+                       :server-id 'tinymist)))
 
 ;; browse-url
 (setq browse-url-handlers '(("." . browse-url-xdg-open)))

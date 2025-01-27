@@ -1,1 +1,2 @@
 (include "./Control-Center/eww.yuck")
+(include "./Brightness/eww.yuck")

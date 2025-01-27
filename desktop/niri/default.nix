@@ -12,6 +12,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    xwayland-satellite
   ];
 
   programs.waybar.enable = true;

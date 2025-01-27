@@ -1,0 +1,30 @@
+.brightness-control {
+    background-color: #1e1e2e;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.brightness-slider-box {
+    padding: 0.5rem;
+
+    label {
+        min-width: 80px;
+        color: #cdd6f4;
+    }
+
+    scale {
+        margin-left: 1rem;
+
+        trough {
+            background-color: #313244;
+            border-radius: 5px;
+            min-height: 10px;
+            min-width: 150px;
+
+            highlight {
+                background-color: #89b4fa;
+                border-radius: 5px;
+            }
+        }
+    }
+}

@@ -261,7 +261,7 @@ in
     #  enable = true;
       tray = {
         enable = true;
-        command = "syncthingtray --wait";
+        #command = "syncthingtray --wait"; # is now fixed
       };
     };
   };

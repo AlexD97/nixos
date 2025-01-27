@@ -43,7 +43,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          nur.overlay
+          nur.overlays.default
           # (self: super: {
           #   newm = newmpkg.packages.x86_64-linux.newm-atha;
           #   #pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
@@ -73,21 +73,21 @@
           #   version = "master"; });}
           # )
 
-          (final: prev: {rofi-wayland-unwrapped = prev.rofi-wayland-unwrapped.overrideAttrs (old: {
-            src = prev.fetchFromGitHub {
-              owner = "lbonn";
-              repo = "rofi";
-              #rev = "wayland";
-              rev = "93ad86d";
-              #rev = "0abd887";
-              fetchSubmodules = true;
-              #hash = "sha256-R+6ChMPXARftFu9xOygQAsu8Nv53L33lBrUdfeuiqK0=";
-              hash = "sha256-ipvG75snR39dziidFOb8wwgW2vL4ZIlcP1EWvYEqpP0=";
-              #hash = "sha256-Xm5UUktlMjiecRUaTIrSjPPYJHjWqfSpAQ0D0G4ldr4=";
-            };
-            patches = [];
-            version = "wayland"; });}
-          )
+          # (final: prev: {rofi-wayland-unwrapped = prev.rofi-wayland-unwrapped.overrideAttrs (old: {
+          #   src = prev.fetchFromGitHub {
+          #     owner = "lbonn";
+          #     repo = "rofi";
+          #     #rev = "wayland";
+          #     rev = "93ad86d";
+          #     #rev = "0abd887";
+          #     fetchSubmodules = true;
+          #     #hash = "sha256-R+6ChMPXARftFu9xOygQAsu8Nv53L33lBrUdfeuiqK0=";
+          #     hash = "sha256-ipvG75snR39dziidFOb8wwgW2vL4ZIlcP1EWvYEqpP0=";
+          #     #hash = "sha256-Xm5UUktlMjiecRUaTIrSjPPYJHjWqfSpAQ0D0G4ldr4=";
+          #   };
+          #   patches = [];
+          #   version = "wayland"; });}
+          # )
           /*(self: super: {
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/

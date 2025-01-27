@@ -1,0 +1,38 @@
+(defpoll brightness1 :interval "1s"
+  `scripts/brightness.sh get 1`)
+
+(defpoll brightness2 :interval "1s"
+  `scripts/brightness.sh get 2`)
+
+(defpoll brightness3 :interval "1s"
+  `scripts/brightness.sh get 3`)
+
+(defwidget brightness_slider [display brightness]
+  (box :class "brightness-slider-box"
+       :orientation "h"
+       :space-evenly false
+    (label :text "Display ${display}")
+    (scale :min 0
+           :max 100
+           :value brightness
+           :onchange "scripts/brightness.sh set ${display} {}")))
+
+(defwidget brightness_control []
+  (box :class "brightness-control"
+       :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (brightness_slider :display 1 :brightness brightness1)
+    (brightness_slider :display 2 :brightness brightness2)
+    (brightness_slider :display 3 :brightness brightness3)))
+
+(defwindow brightness
+  :monitor 0
+  :geometry (geometry :x "0%"
+                     :y "0%"
+                     :width "300px"
+                     :height "200px"
+                     :anchor "center")
+  :windowtype "dock"
+  :wm-ignore false
+  (brightness_control))

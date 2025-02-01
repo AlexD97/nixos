@@ -1,11 +1,11 @@
 .brightness-control {
     background-color: #1e1e2e;
-    padding: 1rem;
+    padding: 16px;
     border-radius: 10px;
 }
 
 .brightness-slider-box {
-    padding: 0.5rem;
+    padding: 8px;
 
     label {
         min-width: 80px;
@@ -13,7 +13,7 @@
     }
 
     scale {
-        margin-left: 1rem;
+        margin-left: 16px;
 
         trough {
             background-color: #313244;

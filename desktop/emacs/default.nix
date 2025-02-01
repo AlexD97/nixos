@@ -51,6 +51,7 @@
       epkgs.notmuch
 
       epkgs.eglot-jl
+      epkgs.julia-mode
       epkgs.fsharp-mode
       epkgs.eglot-fsharp
       epkgs.nix-mode

@@ -812,10 +812,10 @@
                 (shell-command-to-string "agda-mode locate")))
 
 ;; Quelpa
-;; (setq quelpa-upgrade-interval 14)
-;; (add-hook #'after-init-hook #'quelpa-upgrade-all-maybe)
+(setq quelpa-upgrade-interval 14)
+(add-hook #'after-init-hook #'quelpa-upgrade-all-maybe)
 ;(setq quelpa-update-melpa-p nil)
-(setq quelpa-checkout-melpa-p nil)
+;(setq quelpa-checkout-melpa-p nil)
 
 ;; Straight
 (setq package-enable-at-startup nil)
@@ -850,7 +850,12 @@
   (add-to-list 'copilot-indentation-alist '(agda2-moda 2))
   (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
   (add-to-list 'copilot-indentation-alist '(fsharp-mode 2))
-  (add-to-list 'copilot-indentation-alist '(rust-mode 4)))
+  (add-to-list 'copilot-indentation-alist '(rust-mode 4))
+  (add-to-list 'copilot-indentation-alist '(python-mode 4))
+  (add-to-list 'copilot-indentation-alist '(julia-mode 2))
+  ;; disable warning
+  (setq copilot-indent-offset-warning-disable t)
+  )
 
 ;; Typst
 (use-package typst-ts-mode

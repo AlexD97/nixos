@@ -10,6 +10,7 @@ let
     scipy
     requests
     beautifulsoup4
+    pypdf
     pypdf2
     openai
     pygame
@@ -174,6 +175,13 @@ in
     rust-analyzer
     drm_info
 
+    #dart
+    flutter
+    android-tools
+    android-studio
+    #androidPkgs_9_0.platform-tools
+    #jdk
+    
     tree-sitter
     tree-sitter-grammars.tree-sitter-typst
 
@@ -219,6 +227,8 @@ in
     tinymist
     typst-fmt
 
+    lilypond
+    
     sioyek
     evince
     pympress

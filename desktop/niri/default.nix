@@ -13,6 +13,7 @@ in
 
   home.packages = with pkgs; [
     xwayland-satellite
+    labwc
   ];
 
   programs.waybar.enable = true;

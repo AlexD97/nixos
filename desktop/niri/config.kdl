@@ -369,10 +369,10 @@ binds {
 
     Mod+Q { close-window; }
 
-    Mod+I     { focus-column-left; }
-    Mod+A     { focus-window-down; }
-    Mod+L     { focus-window-up; }
-    Mod+E     { focus-column-right; }
+    Mod+I allow-inhibiting=false    { focus-column-left; }
+    Mod+A allow-inhibiting=false    { focus-window-down; }
+    Mod+L allow-inhibiting=false    { focus-window-up; }
+    Mod+E allow-inhibiting=false    { focus-column-right; }
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
@@ -399,37 +399,37 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+I     { focus-monitor-left; }
-    Mod+Shift+A     { focus-monitor-down; }
-    Mod+Shift+L     { focus-monitor-up; }
-    Mod+Shift+E     { focus-monitor-right; }
+    Mod+Shift+I allow-inhibiting=false    { focus-monitor-left; }
+    Mod+Shift+A allow-inhibiting=false    { focus-monitor-down; }
+    Mod+Shift+L allow-inhibiting=false    { focus-monitor-up; }
+    Mod+Shift+E allow-inhibiting=false    { focus-monitor-right; }
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
     Mod+Shift+Right { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+I     { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+A     { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+L     { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+E     { move-window-to-monitor-right; }
+    Mod+Shift+Ctrl+I allow-inhibiting=false    { move-window-to-monitor-left; }
+    Mod+Shift+Ctrl+A allow-inhibiting=false    { move-window-to-monitor-down; }
+    Mod+Shift+Ctrl+L allow-inhibiting=false    { move-window-to-monitor-up; }
+    Mod+Shift+Ctrl+E allow-inhibiting=false    { move-window-to-monitor-right; }
     Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-window-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
 
-    Mod+W              { focus-workspace-down; }
-    Mod+X              { focus-workspace-up; }
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+Ctrl+W         { move-window-to-workspace-down; }
-    Mod+Ctrl+X         { move-window-to-workspace-up; }
-    Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-window-to-workspace-up; }
+    Mod+W allow-inhibiting=false              { focus-workspace-down; }
+    Mod+X allow-inhibiting=false              { focus-workspace-up; }
+    Mod+Page_Down allow-inhibiting=false      { focus-workspace-down; }
+    Mod+Page_Up allow-inhibiting=false        { focus-workspace-up; }
+    Mod+Ctrl+W allow-inhibiting=false         { move-window-to-workspace-down; }
+    Mod+Ctrl+X allow-inhibiting=false         { move-window-to-workspace-up; }
+    Mod+Ctrl+Page_Down allow-inhibiting=false { move-window-to-workspace-down; }
+    Mod+Ctrl+Page_Up allow-inhibiting=false   { move-window-to-workspace-up; }
 
-    Mod+Shift+W         { move-workspace-down; }
-    Mod+Shift+X         { move-workspace-up; }
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+W allow-inhibiting=false         { move-workspace-down; }
+    Mod+Shift+X allow-inhibiting=false         { move-workspace-up; }
+    Mod+Shift+Page_Down allow-inhibiting=false { move-workspace-down; }
+    Mod+Shift+Page_Up allow-inhibiting=false   { move-workspace-up; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -471,6 +471,8 @@ binds {
     Mod+V { set-column-width "-10%"; }
     Mod+C { set-column-width "+10%"; }
 
+    Mod+Y { expand-column-to-available-width; }
+
     // Finer height adjustments when in column with other windows.
     Mod+Shift+V { set-window-height "-10%"; }
     Mod+Shift+C { set-window-height "+10%"; }
@@ -478,6 +480,12 @@ binds {
     // Move the focused window between the floating and the tiling layout.
     Mod+Alt+V       { toggle-window-floating; }
     Mod+Alt+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Tabs
+    Mod+0           { toggle-column-tabbed-display; }
+
+    // Inhibit shortcuts
+    Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have

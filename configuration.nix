@@ -117,6 +117,11 @@ in
     #media-session.enable = true;
   };
 
+  # Android
+  # services.udev.packages = [ pkgs.android-udev-rules ];
+  programs.adb.enable = true;
+  # users.users.alexander.extraGroups = [ "adbusers" ];
+  
   # Screen share on wlroots
   xdg = {
     portal = {
@@ -175,7 +180,7 @@ in
   users.users.${user} = {
     isNormalUser = true;
     description = "alexander";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "qemu-libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "qemu-libvirtd" "adbusers" ];
     packages = with pkgs; [
       firefox
       brave

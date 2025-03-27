@@ -78,7 +78,7 @@ in
     xfce.thunar
     xfce.tumbler
     thunderbird
-    dolphin
+    kdePackages.dolphin
     libsForQt5.dolphin-plugins
     libsForQt5.kio-extras
     krusader
@@ -86,9 +86,9 @@ in
     pavucontrol
     eww
 
-    gwenview
+    kdePackages.gwenview
 
-    breeze-icons
+    kdePackages.breeze-icons
     
     sway
     swaybg

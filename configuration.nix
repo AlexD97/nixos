@@ -184,7 +184,7 @@ in
     packages = with pkgs; [
       firefox
       brave
-      kate
+      kdePackages.kate
     #  thunderbird
     ];
     shell = pkgs.zsh;

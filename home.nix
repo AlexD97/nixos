@@ -232,7 +232,7 @@ in
     sioyek
     evince
     pympress
-    okular
+    kdePackages.okular
 
     #xournalpp
 

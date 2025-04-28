@@ -14,6 +14,11 @@ let
     pypdf2
     openai
     pygame
+
+    pyaudio
+    speechrecognition
+    #pydub
+    #sounddevice
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 
@@ -271,7 +276,7 @@ in
     #  enable = true;
       tray = {
         enable = true;
-        #command = "syncthingtray --wait"; # is now fixed
+        # command = "syncthingtray --wait"; # is now fixed
       };
     };
   };
@@ -286,11 +291,11 @@ in
     RestartSec = "3";
   };
 
-  systemd.user.services.syncthingtray.Service = {
-    Restart = "on-failure";
-    RestartSec = "10";
-    ExecStart = lib.mkForce "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray}/bin/syncthingtray --wait'";
-  };
+  # systemd.user.services.syncthingtray.Service = {
+  #   Restart = "on-failure";
+  #   RestartSec = "10";
+  #   ExecStart = lib.mkForce "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/sleep 5; ${pkgs.syncthingtray}/bin/syncthingtray --wait'";
+  # };
 
   systemd.user.targets.tray = {
     Unit = {

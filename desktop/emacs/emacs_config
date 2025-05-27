@@ -25,12 +25,7 @@
 ;; below you will see customization automatically added by Emacs
 
 (require 'use-package)
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;(load-theme 'atom-one-light t)
-(load-theme 'one-light t)
-
-
+	     
 ;; ;; Xah fly keys
 ;; (use-package xah-fly-keys
 ;;   :config
@@ -832,6 +827,16 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+;; Themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(use-package one-themes
+  :straight (:host github
+	     :repo "AlexD97/emacs-one-themes")
+  )
+;(load-theme 'atom-one-light t)
+(load-theme 'one-light t)
+;(load-theme 'doom-one-light t)
 
 ;; Copilot
 (use-package copilot

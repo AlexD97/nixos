@@ -174,7 +174,10 @@ in
   services.fstrim.enable = lib.mkDefault true;
 
   # NTFS support
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = [ "ntfs" "exfat" ];
+
+  # ExFAT support
+  # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {

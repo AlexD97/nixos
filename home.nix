@@ -157,6 +157,8 @@ in
     udiskie
     jmtpfs
     gparted
+    partclone
+    psmisc
 
     #jetbrains.rider
     zed
@@ -236,7 +238,7 @@ in
     
     sioyek
     evince
-    pympress
+    #pympress
     kdePackages.okular
 
     #xournalpp

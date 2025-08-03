@@ -267,7 +267,7 @@ in
   #   enableSSHSupport = true;
    };
 
-   programs.ssh.startAgent = true;
+   # programs.ssh.startAgent = true;
 
   #  programs.evolution = {
   #   enable = true;

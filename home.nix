@@ -247,6 +247,7 @@ in
     vorta
 
     signal-desktop
+    threema-desktop
   ];
 
   programs.vscode = {

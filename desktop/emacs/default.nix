@@ -42,6 +42,7 @@
       epkgs.rainbow-delimiters
       epkgs.org-bullets
       epkgs.ligature
+      epkgs.multiple-cursors
 
       epkgs.quelpa
       epkgs.bind-key

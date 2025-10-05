@@ -299,8 +299,8 @@ window-rule {
     // You can match by app-id and by title.
     // The window must match all properties of the match directive.
     //match app-id="org.myapp.MyApp" title="My Cool App"
-    //match app-id="org.gnome.Evince"
-    match app-id="evince"
+    match app-id="org.gnome.Evince"
+    //match app-id="evince"
 
     // There can be multiple match directives. A window must match any one
     // of the rule's match directives.

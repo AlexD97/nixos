@@ -53,7 +53,8 @@ in
     debug-newm
     waybar
     wob
-    rofi-wayland
+    #rofi-wayland
+    rofi
     #mako
     #deadd-notification-center
     dunst
@@ -79,8 +80,8 @@ in
     xfce.tumbler
     thunderbird
     kdePackages.dolphin
-    libsForQt5.dolphin-plugins
-    libsForQt5.kio-extras
+    kdePackages.dolphin-plugins
+    kdePackages.kio-extras
     krusader
 
     pavucontrol

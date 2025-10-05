@@ -123,7 +123,7 @@ in
     ripgrep-all
     pinentry-gnome3
     #polkit_gnome
-    libsForQt5.polkit-kde-agent
+    kdePackages.polkit-kde-agent-1
     imagemagick
     poppler_utils
     graphviz
@@ -252,15 +252,15 @@ in
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; with inputs.vscode-marketplace.extensions.${inputs.system}.vscode-marketplace; [
+    profiles.default.extensions = with pkgs.vscode-extensions; with inputs.vscode-marketplace.extensions.${inputs.system}.vscode-marketplace; [
       james-yu.latex-workshop
       julialang.language-julia
-      ms-dotnettools.csharp
-      ionide.ionide-fsharp
+      #ms-dotnettools.csharp
+      #ionide.ionide-fsharp
       bbenoist.nix
       ms-python.python
-      pkgs.vscode-extensions.github.copilot
-      pkgs.vscode-extensions.github.copilot-chat
+      #pkgs.vscode-extensions.github.copilot
+      #pkgs.vscode-extensions.github.copilot-chat
       #nvarner.typst-lsp
       myriad-dreamin.tinymist
       rust-lang.rust-analyzer
@@ -317,7 +317,7 @@ in
     Service = {
       Type = "simple";
       #ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/bin/polkit-kde-authentication-agent-1";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/bin/polkit-kde-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;

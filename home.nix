@@ -115,7 +115,7 @@ in
     yt-dlp
     ffmpeg
     anki
-    syncthingtray
+    #syncthingtray
     localsend
     warpd
     sqlite
@@ -254,17 +254,17 @@ in
     enable = true;
     profiles.default.extensions = with pkgs.vscode-extensions; with inputs.vscode-marketplace.extensions.${inputs.system}.vscode-marketplace; [
       james-yu.latex-workshop
-      julialang.language-julia
+      #julialang.language-julia
       #ms-dotnettools.csharp
       #ionide.ionide-fsharp
       bbenoist.nix
-      ms-python.python
+      #ms-python.python
       #pkgs.vscode-extensions.github.copilot
       #pkgs.vscode-extensions.github.copilot-chat
       #nvarner.typst-lsp
       myriad-dreamin.tinymist
-      rust-lang.rust-analyzer
-      itdongquoctien.html-inline-style-conversion
+      #rust-lang.rust-analyzer
+      #itdongquoctien.html-inline-style-conversion
 
       akamud.vscode-theme-onelight
     ];

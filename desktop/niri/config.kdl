@@ -347,9 +347,9 @@ binds {
     // when running as a winit window.
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "alacritty"; }
+    Mod+Return { spawn "emacsclient" "-c" "-a" "'emacs'"; }
+    Mod+T { spawn "alacritty"; }
     Mod+R { spawn "rofi" "-show" "run"; }
-    Mod+T { spawn "emacsclient" "-c" "-a" "'emacs'"; }
     Mod+B { spawn "firefox"; }
     Mod+Alt+L { spawn "swaylock"; }
 

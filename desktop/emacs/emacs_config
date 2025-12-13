@@ -893,6 +893,62 @@
 ;; browse-url
 (setq browse-url-handlers '(("." . browse-url-xdg-open)))
 
+;; Emacs Everywhere
+;; Extend emacs-everywhere-system-configs
+(use-package emacs-everywhere
+  ;; :if (daemonp)
+  ;; :config
+  ;; (setq emacs-everywhere-frame-name-format "emacs-everywhere ∷ %s — %s")
+  ;; (add-to-list 'emacs-everywhere-markdown-apps "Keybase" t)
+  
+  ;; (setq emacs-everywhere-system-configs
+  ;; 	(append emacs-everywhere-system-configs
+  ;; 		'(((wayland . niri)
+  ;; 		   :focus-command ("niri" "msg" "action" "focus-window" "--id" "%w")
+  ;; 		   :info-function emacs-everywhere--app-info-linux-niri))))
+
+  ;; (defun emacs-everywhere--app-info-linux-niri ()
+  ;;   "Return information on the current active window, on a Linux Niri session."
+  ;;   (require 'json)
+  ;;   (let* ((json (json-read-from-string
+  ;; 	      (emacs-everywhere--call "niri" "msg" "-j" "focused-window"))) ;-j for json
+  ;;      (window-id (number-to-string (cdr (assq 'id json))))
+  ;;      (window-title (cdr (assq 'title json)))
+  ;;      (app-name (cdr (assq 'app_id json)))
+  ;;      (window-geometry nil)) ;no geometry in niri
+  ;;     (make-emacs-everywhere-app
+  ;;      :id window-id
+  ;;      :class app-name
+  ;;      :title window-title
+  ;;      :geometry window-geometry)))
+  ;; )
+  :config
+  (setq emacs-everywhere-frame-name-format "emacs-everywhere ∷ %s — %s")
+  (add-to-list 'emacs-everywhere-markdown-apps "Keybase" t)
+
+  ;; Extend emacs-everywhere-system-configs
+  (setq emacs-everywhere-system-configs
+        (append emacs-everywhere-system-configs
+                '(((wayland . niri)
+                   :focus-command ("niri" "msg" "action" "focus-window" "--id" "%w")
+                   :info-function emacs-everywhere--app-info-linux-niri))))
+
+  (defun emacs-everywhere--app-info-linux-niri ()
+    "Return information on the current active window, on a Linux Niri session."
+    (require 'json)
+    (let* ((json (json-read-from-string
+              (emacs-everywhere--call
+                   "niri" "msg" "-j" "focused-window"))) ;; -j for json
+       (wid (cdr (assq 'id json)))
+       (window-id (if (numberp wid) (number-to-string wid) wid))
+       (window-title (cdr (assq 'title json)))
+       (app-name (cdr (assq 'app_id json)))
+       (window-geometry nil)) ;; no geometry in niri
+      (make-emacs-everywhere-app
+       :id window-id
+       :class app-name
+       :title window-title
+       :geometry window-geometry))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

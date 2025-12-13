@@ -42,6 +42,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        # config.allowBroken = true;
         overlays = [
           nur.overlays.default
           # (self: super: {

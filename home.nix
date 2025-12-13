@@ -128,6 +128,8 @@ in
     poppler_utils
     graphviz
     jq
+    #ydotool
+    wtype
 
     gnome-boxes
     quickemu
@@ -224,7 +226,7 @@ in
 
     texlive.combined.scheme-full
     ghostscript
-    lhs2tex
+    # lhs2tex
 
     pandoc
     pdftk
@@ -234,6 +236,9 @@ in
     tinymist
     typst-fmt
 
+    gimp
+    darktable
+    
     lilypond
     
     sioyek

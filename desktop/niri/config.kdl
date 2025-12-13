@@ -352,6 +352,7 @@ binds {
     Mod+R { spawn "rofi" "-show" "run"; }
     Mod+B { spawn "firefox"; }
     Mod+Alt+L { spawn "swaylock"; }
+    Mod+G { spawn "emacsclient" "--eval" "(emacs-everywhere)"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     //XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }

@@ -51,6 +51,8 @@
 
       epkgs.notmuch
 
+      epkgs.emacs-everywhere
+
       epkgs.eglot-jl
       epkgs.julia-mode
       epkgs.fsharp-mode

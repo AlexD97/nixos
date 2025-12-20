@@ -212,7 +212,8 @@ in
     pulseaudio
     wget
     gnupg
-    pinentry
+    # pinentry
+    pinentry-gnome3
     pass
     pass-secret-service
     htop
@@ -224,7 +225,7 @@ in
 
     
     virt-manager
-    win-virtio
+    virtio-win
 
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];

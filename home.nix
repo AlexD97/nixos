@@ -125,7 +125,7 @@ in
     #polkit_gnome
     kdePackages.polkit-kde-agent-1
     imagemagick
-    poppler_utils
+    poppler-utils
     graphviz
     jq
     #ydotool
@@ -218,7 +218,7 @@ in
     gyre-fonts
     libertinus
     xits-math
-    vistafonts
+    vista-fonts
     stix-two
     dejavu_fonts
     vollkorn
@@ -234,7 +234,8 @@ in
     typst
     #typst-lsp
     tinymist
-    typst-fmt
+    #typstfmt
+    typstyle
 
     gimp
     darktable

@@ -1,39 +1,27 @@
-(defpoll brightness1 :interval "1s" :initial "0"
-  `./Brightness/scripts/brightness.sh get 1`)
+;; 1. Poll ONCE. Generates: {"d1": 10, "d2": 50, "d3": 100}
+(defpoll brightness_data :interval "30s" :initial "{\"d1\":0,\"d2\":0,\"d3\":0}"
+  `./scripts/brightness.sh get-all`)
 
-(defpoll brightness2 :interval "1s" :initial "0"
-  `./Brightness/scripts/brightness.sh get 2`)
-
-(defpoll brightness3 :interval "1s" :initial "0"
-  `./Brightness/scripts/brightness.sh get 3`)
-
-; (defpoll brightness1 :interval "1s"
-;   `${HOME}/.config/eww/scripts/brightness.sh get 1`)
-
-; (defpoll brightness2 :interval "1s"
-;   `${HOME}/.config/eww/scripts/brightness.sh get 2`)
-
-; (defpoll brightness3 :interval "1s"
-;   `${HOME}/.config/eww/scripts/brightness.sh get 3`)
-
-(defwidget brightness_slider [display brightness]
+(defwidget brightness_slider [display value]
   (box :class "brightness-slider-box"
        :orientation "h"
        :space-evenly false
     (label :text "Display ${display}")
     (scale :min 0
            :max 100
-           :value brightness
-           :onchange "/home/alexander/config/eww/Brightness/scripts/brightness.sh set ${display} {}")))
+           ;; 2. Read the value from the passed argument
+           :value value
+           :onchange "./scripts/brightness.sh set ${display} {}")))
 
 (defwidget brightness_control []
   (box :class "brightness-control"
        :orientation "v"
        :space-evenly false
        :spacing 10
-    (brightness_slider :display 1 :brightness brightness1)
-    (brightness_slider :display 2 :brightness brightness2)
-    (brightness_slider :display 3 :brightness brightness3)))
+    ;; 3. Pass the specific JSON field to each widget
+    (brightness_slider :display 1 :value {brightness_data.d1})
+    (brightness_slider :display 2 :value {brightness_data.d2})
+    (brightness_slider :display 3 :value {brightness_data.d3})))
 
 (defwindow brightness
   :monitor 0

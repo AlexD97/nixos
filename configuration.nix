@@ -168,7 +168,10 @@ in
     #GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"; # for gtk / udiskie (pixbuf)
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = [
+    "/share/zsh"
+    "/share/thumbnailers"
+  ];
 
   # SSD trim
   services.fstrim.enable = lib.mkDefault true;
@@ -183,7 +186,7 @@ in
   users.users.${user} = {
     isNormalUser = true;
     description = "alexander";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "qemu-libvirtd" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "qemu-libvirtd" "adbusers" "i2c" ];
     packages = with pkgs; [
       firefox
       brave

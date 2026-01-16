@@ -239,6 +239,12 @@ in
 
     gimp
     darktable
+    rapidraw
+    hdrmerge
+    libheif
+    libheif.out
+    libopenraw
+    kdePackages.kimageformats
     
     lilypond
     

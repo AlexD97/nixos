@@ -64,6 +64,42 @@
             enableHybridCodec = true; });}
           )
 
+          (final: prev: {
+            rapidraw = prev.rapidraw.overrideAttrs (old: rec {
+              version = "1.4.8";
+              
+              src = prev.fetchFromGitHub {
+                owner = "CyberTimon";
+                repo = "RapidRAW";
+                rev = "v${version}";
+                fetchSubmodules = true;
+                hash = "sha256-QoT46sfRAJtmFkZDZ0YOgIq+X7KXIYw02VZF22gMdeo=";
+              };
+
+              cargoDeps = prev.rustPlatform.fetchCargoVendor {
+                src = "${src}/src-tauri"; 
+                name = "${old.pname}-${version}";
+                hash = "sha256-2+TCnSrTGFJ0aP3UBPrWdfgE6WwwSVBIQw78hCsfinU=";
+                # hash = "sha256-2+TCnSrTGFJ0aP3UBPrWdfgE6WwwSVBIQw78hCsfinU=";
+              };
+
+              # cargoDeps = old.cargoDeps.overrideAttrs (oldDeps: {
+              #   inherit src;
+              #   outputHashMode = "recursive";
+              #   outputHash = "sha256-NHJcaK7BoBFGfdnhvslTDcW22iJk7XmwBBAM56GZ53w=";
+              # });
+              
+              npmDeps = prev.fetchNpmDeps {
+                inherit src;
+                hash = "sha256-jenSEANarab/oQnC80NoM1jWmvdeXF3bJ9I/vOGcBb0=";
+              };
+              
+              cargoBuildFlags = (old.cargoBuildFlags or []) ++ [ "--ignore-rust-version" ];
+
+              doCheck = false;
+            });
+          })
+          
           # (final: prev: {typst = prev.typst.overrideAttrs (old: {
           #   src = prev.fetchFromGitHub {
           #     owner = "typst";

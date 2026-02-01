@@ -228,6 +228,8 @@ in
     ghostscript
     # lhs2tex
 
+    calibre
+    
     pandoc
     pdftk
 

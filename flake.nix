@@ -33,7 +33,6 @@
 
     #vscode-marketplace.url = "github:ameertaweel/nix-vscode-marketplace";
     vscode-marketplace.url = "github:nix-community/nix-vscode-extensions";
-
   };
 
   outputs = { self, nixpkgs, home-manager, nur, niri, vscode-marketplace, ... }:
@@ -66,20 +65,20 @@
 
           (final: prev: {
             rapidraw = prev.rapidraw.overrideAttrs (old: rec {
-              version = "1.4.8";
+              version = "1.4.10";
               
               src = prev.fetchFromGitHub {
                 owner = "CyberTimon";
                 repo = "RapidRAW";
                 rev = "v${version}";
                 fetchSubmodules = true;
-                hash = "sha256-QoT46sfRAJtmFkZDZ0YOgIq+X7KXIYw02VZF22gMdeo=";
+                hash = "sha256-piUs1wQ7CqrhaRQ9FH+BEzISvexm8faAr8Wtli9C5gI=";
               };
 
               cargoDeps = prev.rustPlatform.fetchCargoVendor {
                 src = "${src}/src-tauri"; 
                 name = "${old.pname}-${version}";
-                hash = "sha256-2+TCnSrTGFJ0aP3UBPrWdfgE6WwwSVBIQw78hCsfinU=";
+                hash = "sha256-ijyrq2BwNeJM8eM6yc5jmCicpLndhtKVlwHviMwpFS4=";
                 # hash = "sha256-2+TCnSrTGFJ0aP3UBPrWdfgE6WwwSVBIQw78hCsfinU=";
               };
 

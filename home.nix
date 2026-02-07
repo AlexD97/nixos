@@ -162,6 +162,8 @@ in
     partclone
     psmisc
 
+    android-tools
+
     #jetbrains.rider
     zed
 

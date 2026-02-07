@@ -116,11 +116,6 @@ in
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Android
-  # services.udev.packages = [ pkgs.android-udev-rules ];
-  programs.adb.enable = true;
-  # users.users.alexander.extraGroups = [ "adbusers" ];
   
   # Screen share on wlroots
   xdg = {

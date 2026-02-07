@@ -65,14 +65,14 @@
 
           (final: prev: {
             rapidraw = prev.rapidraw.overrideAttrs (old: rec {
-              version = "1.4.10";
+              version = "1.4.12";
               
               src = prev.fetchFromGitHub {
                 owner = "CyberTimon";
                 repo = "RapidRAW";
                 rev = "v${version}";
                 fetchSubmodules = true;
-                hash = "sha256-piUs1wQ7CqrhaRQ9FH+BEzISvexm8faAr8Wtli9C5gI=";
+                hash = "sha256-WE6/dNRkRr2ym7CsSEqH+GtFbwSi03kL4L4NwH4cn8A=";
               };
 
               cargoDeps = prev.rustPlatform.fetchCargoVendor {

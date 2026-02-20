@@ -76,8 +76,8 @@ in
     #evolution
     #evolution-ews
     adwaita-icon-theme
-    xfce.thunar
-    xfce.tumbler
+    thunar
+    tumbler
     thunderbird
     kdePackages.dolphin
     kdePackages.dolphin-plugins

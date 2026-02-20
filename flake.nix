@@ -72,13 +72,13 @@
                 repo = "RapidRAW";
                 rev = "v${version}";
                 fetchSubmodules = true;
-                hash = "sha256-WE6/dNRkRr2ym7CsSEqH+GtFbwSi03kL4L4NwH4cn8A=";
+                hash = "sha256-ZsyRK2enyRZzmd/0Kv0RqkPiLso3CET9x6yCPRU0RBk=";
               };
 
               cargoDeps = prev.rustPlatform.fetchCargoVendor {
                 src = "${src}/src-tauri"; 
                 name = "${old.pname}-${version}";
-                hash = "sha256-ijyrq2BwNeJM8eM6yc5jmCicpLndhtKVlwHviMwpFS4=";
+                hash = "sha256-F5fN14dv8iFUub3bYci+MC8fuyLLZKuoF9W1cfJ7NLo=";
                 # hash = "sha256-2+TCnSrTGFJ0aP3UBPrWdfgE6WwwSVBIQw78hCsfinU=";
               };
 

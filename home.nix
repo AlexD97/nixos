@@ -19,6 +19,8 @@ let
     speechrecognition
     #pydub
     #sounddevice
+
+    betacode
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 
@@ -192,6 +194,9 @@ in
     android-studio
     #androidPkgs_9_0.platform-tools
     #jdk
+
+    antigravity-fhs
+    google-chrome
     
     tree-sitter
     tree-sitter-grammars.tree-sitter-typst
@@ -225,6 +230,7 @@ in
     dejavu_fonts
     vollkorn
     cm_unicode
+    cardo
 
     texlive.combined.scheme-full
     ghostscript

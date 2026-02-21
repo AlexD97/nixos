@@ -195,7 +195,7 @@ in
     #androidPkgs_9_0.platform-tools
     #jdk
 
-    antigravity-fhs
+    google-antigravity
     google-chrome
     
     tree-sitter

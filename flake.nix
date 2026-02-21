@@ -33,9 +33,11 @@
 
     #vscode-marketplace.url = "github:ameertaweel/nix-vscode-marketplace";
     vscode-marketplace.url = "github:nix-community/nix-vscode-extensions";
+
+    antigravity-nix.url = "github:jacopone/antigravity-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, niri, vscode-marketplace, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, niri, vscode-marketplace, antigravity-nix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -44,6 +46,9 @@
         # config.allowBroken = true;
         overlays = [
           nur.overlays.default
+
+          antigravity-nix.overlays.default
+          
           # (self: super: {
           #   newm = newmpkg.packages.x86_64-linux.newm-atha;
           #   #pywm-fullscreen = pywm-fullscreenpkg.packages.x86_64-linux.pywm-fullscreen;
@@ -62,7 +67,7 @@
           (final: prev: {vaapiIntel = prev.vaapiIntel.overrideAttrs (old: {
             enableHybridCodec = true; });}
           )
-
+          
           (final: prev: {
             rapidraw = prev.rapidraw.overrideAttrs (old: rec {
               version = "1.4.12";

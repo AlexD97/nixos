@@ -11,7 +11,7 @@
 
       epkgs.pdf-tools
 
-      epkgs.treesit-grammars.with-all-grammars
+      #epkgs.treesit-grammars.with-all-grammars
 
       #epkgs.typst-mode
       

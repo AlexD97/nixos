@@ -121,6 +121,7 @@ in
     localsend
     warpd
     sqlite
+    sqlitebrowser
     ripgrep
     ripgrep-all
     pinentry-gnome3
@@ -137,6 +138,7 @@ in
     quickemu
     #quickgui
     spice-gtk
+    freerdp
 
     cachix
 
@@ -236,6 +238,10 @@ in
     ghostscript
     # lhs2tex
 
+    meld
+    
+    sile
+    
     calibre
     
     pandoc

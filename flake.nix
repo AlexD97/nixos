@@ -70,21 +70,21 @@
           
           (final: prev: {
             rapidraw = prev.rapidraw.overrideAttrs (old: rec {
-              version = "1.5.1";
+              version = "1.5.2";
               
               src = prev.fetchFromGitHub {
                 owner = "CyberTimon";
                 repo = "RapidRAW";
                 rev = "v${version}";
                 fetchSubmodules = true;
-                hash = "sha256-6EbhChvTYIGzerELoZX6fspZ9MpiT4J39XKbEe61nq8=";
+                hash = "sha256-CznRIm2dElL+SyIWiSw3GRBe9+iXINeZOsk6VlKmeL0=";
               };
 
               cargoDeps = prev.rustPlatform.fetchCargoVendor {
                 src = "${src}/src-tauri"; 
                 name = "${old.pname}-${version}";
                 # hash = lib.fakeHash;
-                hash = "sha256-cgqNGft6LK5XNGv1CDLw5v+m8a9xmu7albfoGJnkE34=";
+                hash = "sha256-IIl4BSEMpyLiiZQGRlQaIPpXNQKGg6GrGQmnHDzDAdc=";
               };
 
               # cargoDeps = old.cargoDeps.overrideAttrs (oldDeps: {
@@ -95,7 +95,8 @@
               
               npmDeps = prev.fetchNpmDeps {
                 inherit src;
-                hash = "sha256-YpM/EQ4eFqziwEpSXpBNEO8A5fCmjVtCrgr11YxLKxY=";
+                # hash = lib.fakeHash;
+                hash = "sha256-PLwefGi6p6rJLvLonHXszA74wqySyoE3xxRPDlrfgUQ=";
               };
               
               cargoBuildFlags = (old.cargoBuildFlags or []) ++ [ "--ignore-rust-version" ];

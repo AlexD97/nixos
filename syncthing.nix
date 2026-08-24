@@ -1,13 +1,9 @@
 { config, pkgs, lib, ... }:
 let
   allDevicesExceptPixel = {
-    desktop = {
-      name = "desktop";
-      id = "S6NVNGZ-6S56NOX-RM3YCQP-PAKJN3J-BJHQ3VE-FRAA6BC-XPYBXUM-T5WEBAO";
-    };
     phone = {
       name = "phone";
-      id = "R3X7TBQ-HG35NDY-OXJSFNG-MFNWHAV-HUIRI4G-YCKWIT6-4WXYHG2-3QHBIQM";
+      id = "A2KIQS2-TFUCGOR-OM7RYUB-FRPLNDV-GB2S37W-7Z6PAST-UYSPLUB-ORV5SA4";
     };
     tablet = {
       name = "tablet";
@@ -26,7 +22,6 @@ let
     };
   };
   devicesNamesExceptPixel = [
-    "desktop"
     "phone"
     "tablet"
     "nas"

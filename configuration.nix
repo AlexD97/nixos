@@ -43,8 +43,15 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.networkmanager.wifi.powersave = false;
   #networking.networkmanager.wifi.scanRandMacAddress = false;
   programs.nm-applet.enable = true;
+
+  # Gemeindedrucker HP
+  # networking.interfaces."enp0s13f0u4u3".ipv4.addresses = [{
+  #   address = "192.168.50.1";
+  #   prefixLength = 24;
+  # }];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -89,11 +96,15 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
-  services.avahi.enable = true;
+  services.ipp-usb.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin
+                                pkgs.cnijfilter2 ];
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
   # Important to resolve .local domains of printers, otherwise you get an error
   # like  "Impossible to connect to XXX.local: Name or service not known"
-  services.avahi.nssmdns4 = true;
 
   # Swaylock
   security.pam.services.swaylock = {};

@@ -11,7 +11,7 @@ let
     requests
     beautifulsoup4
     pypdf
-    pypdf2
+    # pypdf2
     openai
     pygame
 
@@ -161,10 +161,12 @@ in
     libappindicator
 
     udiskie
-    jmtpfs
+    # jmtpfs
     gparted
     partclone
     psmisc
+
+    wev
 
     android-tools
 
@@ -197,6 +199,15 @@ in
     #androidPkgs_9_0.platform-tools
     #jdk
 
+    bubblewrap
+    socat
+    
+    github-copilot-cli
+    claude-code
+    codex
+    ollama
+    grok-build
+    
     google-antigravity
     google-chrome
     
@@ -222,17 +233,18 @@ in
     #iosevka-fixed-slab
     (iosevka-bin.override { variant = "SGr-IosevkaFixed"; } )
     (iosevka-bin.override { variant = "SGr-IosevkaFixedCurlySlab"; } )
-    alegreya
-    alegreya-sans
+    # alegreya
+    # alegreya-sans
     gyre-fonts
-    libertinus
+    # libertinus
     xits-math
     vista-fonts
-    stix-two
+    # stix-two
     dejavu_fonts
     vollkorn
     cm_unicode
     cardo
+    google-fonts
 
     texlive.combined.scheme-full
     ghostscript
@@ -268,6 +280,7 @@ in
     evince
     #pympress
     kdePackages.okular
+    pdfpc
 
     #xournalpp
 
@@ -285,7 +298,7 @@ in
       #julialang.language-julia
       #ms-dotnettools.csharp
       #ionide.ionide-fsharp
-      bbenoist.nix
+      #bbenoist.nix
       #ms-python.python
       #pkgs.vscode-extensions.github.copilot
       #pkgs.vscode-extensions.github.copilot-chat
@@ -293,6 +306,7 @@ in
       myriad-dreamin.tinymist
       #rust-lang.rust-analyzer
       #itdongquoctien.html-inline-style-conversion
+      openai.chatgpt
 
       akamud.vscode-theme-onelight
     ];

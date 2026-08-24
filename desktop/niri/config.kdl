@@ -93,26 +93,35 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // It the position is unset or results in an overlap, the output is instead placed
     // automatically.
+    // position x=3304 y=1788
     position x=0 y=0
 }
 
-output "DP-5" {
+// output "DP-5" {
+output "PNP(BNQ) BenQ SW242Q T3S00159019" {
     scale 1.0
-    mode "1680x1050"
-    position x=0 y=-1050
+    mode "2560x1600"
+    // position x=1080 y=188
+    position x=-2224 y=-1600
+    
+    focus-at-startup
 }
 
-output "DP-6" {
+// output "DP-6" {
+output "Iiyama North America PL2530H 1164601222896" {
     scale 1.0
     mode "1080x1920"
-    position x=-3000 y=-1920
+    // position x=0 y=0
+    position x=-3304 y=-1788
     transform "90"
 }
 
-output "DP-7" {
+// output "DP-7" {
+output "Iiyama North America PL2395W 0x00002C0C" {
     scale 1.0
     mode "1920x1200"
-    position x=-1920 y=-1200
+    // position x=3640 y=588
+    position x=336 y=-1200
 }
 
 layout {
@@ -324,7 +333,7 @@ window-rule {
     // You can set the output that this window will initially open on.
     // If such an output does not exist, it will open on the currently
     // focused output as usual.
-    open-on-output "DP-6"
+    open-on-output "Iiyama North America PL2530H 1164601222896"
 }
 
 // Here's a useful example. Work around WezTerm's initial configure bug
@@ -409,14 +418,23 @@ binds {
     Mod+Shift+Up    { focus-monitor-up; }
     Mod+Shift+Right { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+I allow-inhibiting=false    { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+A allow-inhibiting=false    { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+L allow-inhibiting=false    { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+E allow-inhibiting=false    { move-window-to-monitor-right; }
-    Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
+    Mod+Shift+Ctrl+I allow-inhibiting=false    { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+A allow-inhibiting=false    { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+L allow-inhibiting=false    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+E allow-inhibiting=false    { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    Mod+Shift+Ctrl+Alt+I allow-inhibiting=false    { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+Alt+A allow-inhibiting=false    { move-workspace-to-monitor-down; }
+    Mod+Shift+Ctrl+Alt+L allow-inhibiting=false    { move-workspace-to-monitor-up; }
+    Mod+Shift+Ctrl+Alt+E allow-inhibiting=false    { move-workspace-to-monitor-right; }
+    Mod+Shift+Ctrl+Alt+Left  { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+Alt+Down  { move-workspace-to-monitor-down; }
+    Mod+Shift+Ctrl+Alt+Up    { move-workspace-to-monitor-up; }
+    Mod+Shift+Ctrl+Alt+Right { move-workspace-to-monitor-right; }
 
     Mod+W allow-inhibiting=false              { focus-workspace-down; }
     Mod+X allow-inhibiting=false              { focus-workspace-up; }
@@ -502,6 +520,8 @@ binds {
 
     Mod+Shift+Q { quit; }
     Mod+Shift+P { power-off-monitors; }
+
+    Mod+ssharp { show-hotkey-overlay; }
 
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }

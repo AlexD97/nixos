@@ -6,6 +6,7 @@
       epkgs.vterm
       epkgs.async
       epkgs.vterm-toggle
+      epkgs.centaur-tabs
 
       epkgs.auctex
 

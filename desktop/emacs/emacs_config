@@ -719,10 +719,98 @@
 
 (use-package vterm-toggle
   :bind (("M-t" . vterm-toggle)
-	 ("M-+" . vterm-toggle-show)
-	 :map vterm-mode-map
-	 ("M-t" . vterm-toggle-hide))
+	 ("M-+" . vterm-toggle-show))
   :config
+  (defvar my/last-non-vterm-directory nil
+    "The `default-directory' of the most recently focused non-vterm buffer.")
+
+  (defun my/remember-non-vterm-directory ()
+    "Remember the directory of the current non-vterm buffer."
+    (unless (derived-mode-p 'vterm-mode)
+      (when (and (boundp 'default-directory)
+		 default-directory)
+	(setq my/last-non-vterm-directory default-directory))))
+
+  (add-hook 'buffer-list-update-hook #'my/remember-non-vterm-directory)
+
+  (defun vterm-toggle-new ()
+    "Create a new vterm in the directory of the last focused non-vterm buffer."
+    (interactive)
+    (let* ((n (+ 1 (length
+		    (seq-filter
+		     (lambda (b)
+		       (with-current-buffer b
+			 (derived-mode-p 'vterm-mode)))
+		     (buffer-list)))))
+	   (buf (generate-new-buffer
+		 (format "%s<%d>" vterm-buffer-name n)))
+	   (dir (or my/last-non-vterm-directory
+		    default-directory)))
+      (with-current-buffer buf
+	;; `default-directory' needs to be set before starting vterm.
+	(setq default-directory dir)
+	(vterm-mode))
+      (switch-to-buffer buf)))
+  ;; (defun vterm-toggle-new ()
+  ;;   "Create a new vterm buffer and switch to it in the current window."
+  ;;   (interactive)
+  ;;   (let* ((n (+ 1 (length (seq-filter
+  ;;                           (lambda (b)
+  ;;                             (with-current-buffer b
+  ;;                               (derived-mode-p 'vterm-mode)))
+  ;;                           (buffer-list)))))
+  ;;          (buf (generate-new-buffer (format "%s<%d>" vterm-buffer-name n))))
+  ;;     (with-current-buffer buf
+  ;;       (vterm-mode))
+  ;;     (switch-to-buffer buf)))
+
+  (setq vterm-toggle-reset-window-configration-after-exit nil)
+
+  (remove-hook 'kill-buffer-hook #'vterm-toggle--exit-hook)
+
+  (defun my/vterm-buffer-p (buf)
+    "Return non-nil if BUF is a live vterm buffer."
+    (and (buffer-live-p buf)
+	 (with-current-buffer buf
+	   (derived-mode-p 'vterm-mode))))
+
+  (defun my/other-vterm-buffer ()
+    "Return another live vterm buffer, excluding the current one."
+    (seq-find (lambda (buf)
+		(and (not (eq buf (current-buffer)))
+		     (my/vterm-buffer-p buf)))
+	      (buffer-list)))
+
+  (defun my/vterm-toggle-exit-hook ()
+    "When killing a vterm, keep the popup window if another vterm exists."
+    (when (and (fboundp 'vterm-toggle-togglable-buffer-p)
+	       (vterm-toggle-togglable-buffer-p (current-buffer)))
+      ;; Keep vterm-toggle's internal buffer list in sync.
+      (when (boundp 'vterm-toggle--buffer-list)
+	(setq vterm-toggle--buffer-list
+	      (delq (current-buffer) vterm-toggle--buffer-list)))
+
+      (let ((next-vterm (my/other-vterm-buffer))
+	    (wins (get-buffer-window-list (current-buffer) nil t)))
+	(dolist (win wins)
+	  (when (window-live-p win)
+	    (if next-vterm
+		;; Important part: replace the dying vterm with another vterm
+		;; instead of deleting the whole popup window.
+		(set-window-buffer win next-vterm)
+
+	      ;; No other vterms left: preserve the old behavior and close
+	      ;; the popup window if possible.
+	      (cond
+	       ((eq (window-deletable-p win) 'frame)
+		(delete-frame (window-frame win)))
+	       ((window-deletable-p win)
+		(delete-window win))
+	       (t
+		(quit-window nil win)))))))))
+
+  (add-hook 'kill-buffer-hook #'my/vterm-toggle-exit-hook)
+  
   (setq vterm-toggle-fullscreen-p nil)
   (add-to-list 'display-buffer-alist
                '((lambda (buffer-or-name _)
@@ -736,7 +824,37 @@
                  ;;(direction . bottom)
                  ;;(dedicated . t) ;dedicated is supported in emacs27
                  (reusable-frames . visible)
-                 (window-height . 0.3))))
+                 (window-height . 0.35)))
+  
+  (with-eval-after-load 'vterm
+      (define-key vterm-mode-map (kbd "M-t") #'vterm-toggle-hide)
+      (define-key vterm-mode-map (kbd "M-T") #'vterm-toggle-new)))
+
+;; Centaur Tabs
+(use-package centaur-tabs
+  :demand t
+  :config
+  ;; Group all vterm buffers together under one tab group
+  (setq centaur-tabs-buffer-groups-function
+        (lambda ()
+          (list (cond
+                 ((derived-mode-p 'vterm-mode) "Terminal")
+                 (t "Other")))))
+
+  ;; Enable globally (required), then suppress tabs everywhere except vterm
+  (defun my/centaur-tabs-hide-unless-vterm ()
+    "Disable centaur-tabs locally in any buffer that is not a vterm buffer."
+    (unless (derived-mode-p 'vterm-mode)
+      (centaur-tabs-local-mode 1)))
+
+  (add-hook 'after-change-major-mode-hook #'my/centaur-tabs-hide-unless-vterm)
+
+  (centaur-tabs-mode 1)
+
+  ;; Navigate between vterm tabs from within vterm
+  (with-eval-after-load 'vterm
+    (define-key vterm-mode-map (kbd "C-M-n") #'centaur-tabs-forward)
+    (define-key vterm-mode-map (kbd "C-M-p") #'centaur-tabs-backward)))
 
 ;; pdf-tools
 (use-package pdf-tools

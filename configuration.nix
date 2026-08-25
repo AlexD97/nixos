@@ -14,6 +14,7 @@ in
       ./syncthing.nix
       ./desktop/borgbackup
       ./zsh.nix
+      ./desktop/niri
     ];
 
   # Bootloader.

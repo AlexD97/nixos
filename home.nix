@@ -49,7 +49,6 @@ in
   imports = [
     ./desktop/newm
     ./desktop/sway
-    ./desktop/niri
     ./desktop/emacs
     #./desktop/email
     ./desktop/eww
@@ -160,11 +159,16 @@ in
 
     libappindicator
 
+    vdu_controls
+
     udiskie
     # jmtpfs
     gparted
     partclone
     psmisc
+
+    xwayland-satellite
+    labwc
 
     wev
 

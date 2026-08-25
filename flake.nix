@@ -24,7 +24,7 @@
     #pywm-fullscreenpkg.url = "github:jbuchermn/pywm-fullscreen";
     #pywm-fullscreenpkg.inputs.nixpkgs.follows = "nixpkgs";
 
-    niri.url = "github:sodiboo/niri-flake";
+    #niri.url = "github:sodiboo/niri-flake";
     #niri.url = github:AlexD97/niri-flake;
     #niri.inputs.niri-src.url = "github:YaLTeR/niri";
 
@@ -37,7 +37,7 @@
     antigravity-nix.url = "github:jacopone/antigravity-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, niri, vscode-marketplace, antigravity-nix, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, vscode-marketplace, antigravity-nix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -135,7 +135,6 @@
             my-custom-snip = super.callPackage ./custom/snip.nix { };
           })*/
 
-          niri.overlays.niri
           #niri.overlays.niri
         ];
       };
@@ -156,12 +155,6 @@
              home-manager.extraSpecialArgs = {
                inherit pkgs vscode-marketplace system;
              };
-           }
-           niri.nixosModules.niri
-           {
-             programs.niri.enable = true;
-             nixpkgs.overlays = [ niri.overlays.niri ];
-             programs.niri.package = pkgs.niri-unstable;
            }
           ];
         };

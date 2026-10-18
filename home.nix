@@ -112,6 +112,8 @@ in
     alacritty
     #emacs
     vlc
+    soundfont-fluid
+    timidity
     mpv
     yt-dlp
     ffmpeg
@@ -140,6 +142,7 @@ in
     freerdp
 
     cachix
+    home-manager
 
     #obs-studio
     
@@ -166,6 +169,7 @@ in
     gparted
     partclone
     psmisc
+    qdirstat
 
     xwayland-satellite
     labwc
@@ -224,6 +228,7 @@ in
     moreutils
     bc
     recode
+    tree
 
     emacs-all-the-icons-fonts
     material-design-icons
@@ -262,6 +267,7 @@ in
     
     pandoc
     pdftk
+    qpdf
 
     typst
     #typst-lsp

@@ -99,7 +99,8 @@ in
   services.printing.enable = true;
   services.ipp-usb.enable = true;
   services.printing.drivers = [ pkgs.hplipWithPlugin
-                                pkgs.cnijfilter2 ];
+                                pkgs.cnijfilter2
+                                pkgs.epson-escpr2 ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;

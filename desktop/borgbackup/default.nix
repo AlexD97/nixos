@@ -32,6 +32,10 @@
           "*/.venv"
           # VM
           "Programme/quickemu"
+          # Logos
+          "Programmieren/Vibecoding/Logos_Wine_Sandbox/Logos_Wine/data"
+          # Bilder
+          "Bilder/Sony A7CII"
         ];
         homePath = "/home/alexander";
   in {

@@ -36,6 +36,15 @@
           "Programmieren/Vibecoding/Logos_Wine_Sandbox/Logos_Wine/data"
           # Bilder
           "Bilder/Sony A7CII"
+          # Rhema: reproduzierbar (Build, Pakete, Emulator, Testläufe)
+          "Programmieren/Vibecoding/Rhema_Sandbox/*/target"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/ship/rhema-library-*"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/rhema-library-package"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/backup-*"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/android-avd"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/android-gradle"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/android-proof"
+          "Programmieren/Vibecoding/Rhema_Sandbox/Rhema/data/*.apk"
         ];
         homePath = "/home/alexander";
   in {
@@ -48,6 +57,11 @@
       exclude = map (x: paths + "/" + x) common-excludes;
       startAt = "*-*-01/2 00:00:00";
       extraCreateArgs = "--verbose --stats";
+      prune.keep = {
+        daily = 7;
+        weekly = 4;
+        monthly = 6;
+      };
     };
   };
   config.systemd.services = {

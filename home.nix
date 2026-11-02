@@ -157,8 +157,8 @@ in
     notmuch
 
     iperf
-
     ddcutil
+    usbutils
 
     libappindicator
 

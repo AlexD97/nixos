@@ -34,10 +34,10 @@
     #vscode-marketplace.url = "github:ameertaweel/nix-vscode-marketplace";
     vscode-marketplace.url = "github:nix-community/nix-vscode-extensions";
 
-    antigravity-nix.url = "github:jacopone/antigravity-nix";
+    # antigravity-nix.url = "github:jacopone/antigravity-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, vscode-marketplace, antigravity-nix, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, vscode-marketplace, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -47,7 +47,7 @@
         overlays = [
           nur.overlays.default
 
-          antigravity-nix.overlays.default
+          # antigravity-nix.overlays.default
           
           # (self: super: {
           #   newm = newmpkg.packages.x86_64-linux.newm-atha;

@@ -179,20 +179,20 @@ in
     android-tools
 
     #jetbrains.rider
-    zed
+    # zed-editor
 
     #python3
     python-with-my-packages
     julia-bin
     ghc
     agda-with-my-packages
-    dotnet-sdk_8
+    #dotnet-sdk_8
     #fsautocomplete
     gnumake
     #rnix-lsp
     nil
     nodejs
-    idris2
+    #idris2
     haskell-language-server
     cabal-install
     cargo
@@ -210,13 +210,13 @@ in
     bubblewrap
     socat
     
-    github-copilot-cli
+    # github-copilot-cli
     claude-code
     codex
     ollama
     grok-build
     
-    google-antigravity
+    # google-antigravity
     google-chrome
     
     tree-sitter
@@ -300,6 +300,16 @@ in
     signal-desktop
     threema-desktop
   ];
+
+  # Use scripts/ship.sh to build
+   xdg.desktopEntries.rhema = {
+     name = "Rhema";
+     genericName = "Bibelstudium";
+     exec = "${config.home.homeDirectory}/.local/state/rhema/desktop/bin/rhema-desktop";
+     icon = "${config.home.homeDirectory}/.local/state/rhema/desktop/share/icons/hicolor/scalable/apps/org.rhema.research.svg";
+     categories = [ "Education" ];
+   };
+   home.sessionPath = [ "${config.home.homeDirectory}/.local/state/rhema/desktop/bin" ];
 
   programs.vscode = {
     enable = true;

@@ -299,6 +299,10 @@ in
 
     signal-desktop
     threema-desktop
+
+    (pkgs.writeShellScriptBin "rhema-desktop" ''
+      exec "${config.home.homeDirectory}/.local/state/rhema/desktop/bin/rhema-desktop" "$@"
+    '')
   ];
 
   # Use scripts/ship.sh to build

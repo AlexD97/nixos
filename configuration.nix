@@ -197,7 +197,7 @@ in
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "qemu-libvirtd" "adbusers" "i2c" ];
     packages = with pkgs; [
       firefox
-      brave
+      # brave
       kdePackages.kate
     #  thunderbird
     ];

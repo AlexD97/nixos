@@ -148,7 +148,7 @@ in
     
     #nyxt
 
-    libreoffice-fresh
+    libreoffice
     hunspellDicts.de_DE
     aspell
     aspellDicts.de
@@ -255,7 +255,7 @@ in
     cardo
     google-fonts
 
-    texlive.combined.scheme-full
+    texliveFull
     ghostscript
     # lhs2tex
 
